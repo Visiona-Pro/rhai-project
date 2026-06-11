@@ -1,0 +1,1076 @@
+@import "tailwindcss";
+
+/* ─── RESET ESTRUTURAL GLOBAL ─────────────────────────────── */
+/* Previne overflow silencioso em qualquer elemento do projeto */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Filhos de grid e flex nunca ultrapassam o container pai.
+   Sem min-width: 0, o conteúdo pode forçar o pai a crescer. */
+.grid > *,
+.flex > * {
+  min-width: 0;
+}
+
+/* Mídia nunca ultrapassa o container */
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scroll horizontal global desativado */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Mobile: evitar fonte do sistema ampliar automaticamente */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@layer base {
+  :root {
+    --gold:          #D4AF37; /* Rich golden */
+    --gold-light:    #F3E5AB; /* Champagne/Ivory gold */
+    --gold-dark:     #996515; /* Old Gold */
+    --gold-pale:     #FDF6E2;
+    --gold-border:   rgba(212, 175, 55, 0.16);
+    --gold-border-hi:rgba(212, 175, 55, 0.48);
+    --gold-glow:     0 0 32px rgba(212, 175, 55, 0.12);
+    --gold-glow-hi:  0 0 55px rgba(212, 175, 55, 0.32);
+
+    --black:         #020202; /* Onyx Black */
+    --black-1:       #060504; /* Satin black */
+    --black-2:       #0A0907; 
+    --black-3:       #0D0B09; /* Cocoa-dark black */
+    --black-4:       #120F0C; 
+
+    --off-white:     #FAF9F6;
+    --text-muted:    rgba(250,249,246,0.58);
+    --text-light:    rgba(250,249,246,0.85);
+
+    --font-serif:    'Playfair Display', Georgia, serif;
+    --font-sans:     'Manrope', system-ui, sans-serif;
+
+    /* Espaçamentos de seção — sem py-24 hardcoded em cada componente */
+    --section-py:    clamp(1rem, 2vw, 2rem);
+    --container-px:  clamp(1.5rem, 5vw, 5rem);
+    --container-max: 84rem; /* 1344px */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--black);
+    color: var(--off-white);
+  }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.72;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Soft gold/cocoa radial backdrop across entire page for extreme visual depth */
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(45, 29, 15, 0.28) 0%, transparent 45%),
+      radial-gradient(circle at 90% 70%, rgba(35, 25, 12, 0.25) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(10, 8, 5, 0.98) 0%, rgba(2, 2, 2, 1) 100%);
+    background-attachment: scroll; /* CORRIGIDO: fixed quebra scroll no iOS Safari */
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  ::-webkit-scrollbar        { width: 4px; }
+  ::-webkit-scrollbar-track  { background: var(--black); }
+  ::-webkit-scrollbar-thumb  { background: var(--gold-dark); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+}
+
+/* ─── TIPOGRAFIA ─────────────────────────────────────────── */
+.font-editorial-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.14;
+}
+
+.font-editorial-sub {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+
+.font-minimal-body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* ─── DOURADO METÁLICO REALISTA (LIQUID / METALLIC GOLD) ─── */
+.gold-luxury-gradient {
+  background: linear-gradient(
+    115deg,
+    #7d571d 0%,
+    #bfa15f 20%,
+    #f2e3af 38%,
+    #ffffff 45%,
+    #f2e3af 52%,
+    #cfab66 65%,
+    #8f6a27 82%,
+    #e9d59e 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0px 2px 10px rgba(212, 175, 55, 0.15);
+  animation: goldShine 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+/* Outro gradiente ouro metálico, mais intenso e contrastado para títulos de impacto */
+.gold-liquid-text {
+  background: linear-gradient(
+    135deg,
+    #8a6f27 0%,
+    #e8d39e 25%,
+    #ffffff 45%,
+    #f2dfbc 55%,
+    #b2954e 75%,
+    #664b14 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.6));
+  animation: goldShine 7s ease-in-out infinite alternate;
+}
+
+.title-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    #7A5010 0%, #C8922A 18%, #E8C050 35%,
+    #FDF0A0 48%, #E8C050 60%, #C8922A 78%, #7A5010 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0px 4px 18px rgba(0,0,0,0.85));
+}
+
+@keyframes goldShine {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 100% center; }
+}
+
+@keyframes goldShimmerMovement {
+  0%   { background-position: 0% center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes goldGlowPulse {
+  0%, 100% {
+    box-shadow:
+      0 4px 12px rgba(243, 229, 171, 0.2),
+      0 10px 25px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  }
+  50% {
+    box-shadow:
+      0 4px 20px rgba(255, 255, 255, 0.35),
+      0 12px 35px rgba(255, 255, 255, 0.12),
+      0 0 0 1.5px rgba(255, 255, 255, 0.3) inset;
+  }
+}
+
+@keyframes goldSweepEffect {
+  0%        { left: -150%; }
+  35%, 100% { left: 150%; }
+}
+
+/* Efeito de ouro metálico escovado e glitter vindo do fundo do botão CTA */
+.gold-brushed-text {
+  background-image: url('/src/assets/images/brushed_gold_cta_bg.webp') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.6)) !important;
+}
+
+/* ─── COCOA & ONYX GRADIENTS (UNIVERSO DE PROFUNDIDADE) ──── */
+.bg-satin-onyx {
+  background: radial-gradient(circle at 50% 0%, rgba(38, 25, 13, 0.32) 0%, rgba(2, 2, 2, 0.99) 80%);
+  position: relative;
+}
+
+.bg-cocoa-gradient {
+  background: linear-gradient(180deg, #020202 0%, #0d0b09 40%, #16120d 75%, #050403 100%);
+  position: relative;
+}
+
+.bg-satin-black {
+  background: linear-gradient(135deg, #050505 0%, #010101 100%);
+}
+
+/* Subtle metal brushed hairline lines */
+.fio-de-luz {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.05) 15%,
+    rgba(212, 175, 55, 0.45) 50%,
+    rgba(212, 175, 55, 0.05) 85%,
+    transparent 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.fio-de-luz::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(243, 229, 171, 0.7),
+    transparent
+  );
+  animation: threadFlow 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@keyframes threadFlow {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+
+/* Pulsing luxurious background lights */
+.luz-aurora-ouro {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(153, 101, 21, 0.02) 50%, transparent 75%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: auroraPulse 12s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes auroraPulse {
+  0% {
+    transform: scale(0.9) translate(-20px, -15px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.15) translate(25px, 20px);
+    opacity: 1;
+  }
+}
+
+/* ─── SUPERFÍCIES ────────────────────────────────────────── */
+.glass-luxury {
+  background: rgba(6, 5, 4, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.glass-luxury-interactive {
+  background: rgba(10, 8, 7, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-luxury-interactive:hover {
+  background: rgba(18, 14, 11, 0.88);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 32px rgba(212, 175, 55, 0.15);
+  transform: translateY(-4px);
+}
+
+/* ─── BOTÕES - OURO DERRETIDO (MELTED METALLIC GOLD-CTA) ─── */
+.btn-luxury-cta,
+#hero-cta-btn.btn-luxury-cta,
+#checkout-cta-btn.btn-luxury-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.25rem 2.8rem !important;
+  background: linear-gradient(135deg,
+    #7d571d 0%,
+    #bfa15f 20%,
+    #f2e3af 38%,
+    #ffffff 48%,
+    #f2e3af 58%,
+    #cfab66 75%,
+    #8f6a27 100%
+  ) !important;
+  background-size: 260% auto !important;
+  color: #030303 !important;
+  font-family: var(--font-serif) !important;
+  font-weight: 900 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  animation: goldShimmerMovement 5s linear infinite, goldGlowPulse 2.2s ease-in-out infinite !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+@media (min-width: 640px) {
+  .btn-luxury-cta,
+  #hero-cta-btn.btn-luxury-cta,
+  #checkout-cta-btn.btn-luxury-cta {
+    max-width: 450px !important;
+  }
+}
+
+.btn-luxury-cta:hover,
+#hero-cta-btn.btn-luxury-cta:hover,
+#checkout-cta-btn.btn-luxury-cta:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  filter: brightness(1.1) !important;
+}
+
+.btn-luxury-cta:active,
+#hero-cta-btn.btn-luxury-cta:active,
+#checkout-cta-btn.btn-luxury-cta:active {
+  transform: translateY(-1.5px) scale(0.985) !important;
+  filter: brightness(0.95) !important;
+  transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.08s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Double glint beam reflections simulating true metal sheen */
+.btn-luxury-cta::before {
+  display: none !important;
+  content: none !important;
+}
+
+.btn-luxury-cta::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -150% !important;
+  width: 75% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.85) 50%,
+    transparent 100%
+  ) !important;
+  transform: skewX(-25deg) !important;
+  animation: goldSweepEffect 3.5s cubic-bezier(0.25, 1, 0.5, 1) infinite !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+}
+
+/* Secondary Button */
+.btn-luxury-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.05rem 2.2rem;
+  background: rgba(13, 11, 8, 0.4);
+  color: var(--gold-light);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.35s ease,
+              border-color 0.35s ease,
+              color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+.btn-luxury-secondary:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: var(--gold-light);
+  color: var(--off-white);
+  box-shadow: var(--gold-glow);
+}
+
+/* ─── BOTÃO GLITTER DOURADO LUXO MODERNO & FEMININO ─── */
+.btn-glitter-gold,
+#hero-cta-btn,
+#checkout-cta-btn {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 72px !important;
+  width: 100% !important;
+  max-width: 450px !important;
+  text-align: center !important;
+  
+  background-image: url('/src/assets/images/brushed_gold_cta_bg.webp') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  
+  border: 1.2px solid rgba(212, 175, 55, 0.35) !important;
+  color: #ffffff !important;
+  font-family: var(--font-serif) !important;
+  font-weight: 900 !important;
+  font-size: clamp(1.1rem, 4.5vw, 1.3875rem) !important;
+  letter-spacing: normal !important;
+  text-transform: uppercase !important;
+  border-radius: 9999px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  
+  animation: whiteGlowPulse 2.2s ease-in-out infinite !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+}
+
+.btn-glitter-gold span,
+#hero-cta-btn span,
+#checkout-cta-btn span {
+  font-size: clamp(1.1rem, 4.5vw, 1.3875rem) !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  border-color: transparent !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+.btn-glitter-gold::before,
+#hero-cta-btn::before,
+#checkout-cta-btn::before {
+  display: none !important;
+  content: none !important;
+}
+
+.btn-glitter-gold::after,
+#hero-cta-btn::after,
+#checkout-cta-btn::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -150% !important;
+  width: 75% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  ) !important;
+  transform: skewX(-25deg) !important;
+  animation: whiteSweepEffect 3.5s cubic-bezier(0.25, 1, 0.5, 1) infinite !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+  display: block !important;
+}
+
+.btn-glitter-gold:hover,
+#hero-cta-btn:hover,
+#checkout-cta-btn:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  filter: brightness(1.1) !important;
+}
+
+.btn-glitter-gold:active,
+#hero-cta-btn:active,
+#checkout-cta-btn:active {
+  transform: translateY(-1.5px) scale(0.985) !important;
+  filter: brightness(0.95) !important;
+  transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.08s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Animations for White Glow and Light Sweep */
+@keyframes whiteGlowPulse {
+  0% {
+    box-shadow: 
+      0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+      0 4px 12px rgba(243, 229, 171, 0.2),
+      0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 1.5px rgba(255, 255, 255, 0.35) inset,
+      0 4px 20px rgba(255, 255, 255, 0.45),
+      0 12px 35px rgba(255, 255, 255, 0.15);
+  }
+  100% {
+    box-shadow: 
+      0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+      0 4px 12px rgba(243, 229, 171, 0.2),
+      0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes whiteSweepEffect {
+  0% { left: -150%; }
+  35%, 100% { left: 150%; }
+}
+
+/* Override para bordas brancas solicitadas pelo usuário nos elementos selecionados */
+#hero-cta-btn > span,
+#checkout-cta-btn > span {
+  border-color: transparent !important;
+}
+
+/* Override para diminuir o botão CTA do Hero de acordo com a solicitação do usuário */
+#hero-cta-btn {
+  width: 100% !important;
+  max-width: 340px !important;
+  min-height: 65px !important;
+  height: auto !important;
+  padding: 12px 20px !important;
+}
+#hero-cta-btn span {
+  font-size: clamp(0.85rem, 3.8vw, 1.1rem) !important;
+  white-space: normal !important;
+}
+
+/* Override para o botão CTA do Checkout de acordo com a solicitação do usuário */
+#checkout-cta-btn {
+  width: 100% !important;
+  max-width: 402px !important;
+  min-height: 62px !important;
+  height: auto !important;
+  padding: 12px 20px !important;
+}
+#checkout-cta-btn span {
+  font-size: clamp(0.85rem, 4.2vw, 1.3125rem) !important;
+  white-space: normal !important;
+}
+
+/* ─── ANIMAÇÕES LUXUOSAS DE LEITURA (READING REVEAL) ─────── */
+.ler-revelar {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+}
+
+.ler-revelar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-light), transparent);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ler-revelar:hover::after {
+  width: 100%;
+}
+
+.fade-in-blur {
+  animation: fadeInBlur 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* ─── DETALHES OURO LÍQUIDO (LIQUID GOLD DESIGN SYSTEM) ──── */
+/* Asymmetrical specialty frame */
+.moldura-rhaiane {
+  position: relative;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+}
+
+.moldura-rhaiane-borda {
+  position: absolute;
+  inset: 0;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #d4af37, #53390c, #f3e5ab, #000) 1;
+  pointer-events: none;
+}
+
+/* Diamond bullet style list */
+.diamond-bullet {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.diamond-bullet::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  text-shadow: 0 0 8px var(--gold);
+}
+
+/* Before and After States */
+.before-matte {
+  background: linear-gradient(135deg, #100609 0%, #030102 100%);
+  border: 1px solid rgba(175, 45, 60, 0.12);
+  position: relative;
+}
+.before-matte::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(140, 20, 30, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.after-luminous {
+  background: linear-gradient(135deg, #0f0a05 0%, #030202 100%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.08);
+  position: relative;
+}
+.after-luminous::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.09) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Joalheria Digital Box */
+.joalheria-box {
+  background: linear-gradient(155deg, rgba(16, 13, 9, 0.88) 0%, rgba(5, 4, 3, 0.98) 100%);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #d4af37, rgba(212,175,55,0.1), #996515, rgba(212,175,55,0.05)) 1;
+  box-shadow: 
+    0 25px 65px rgba(0, 0, 0, 0.85),
+    0 0 50px rgba(212, 175, 55, 0.04);
+}
+
+/* Collection item style (order bumps / bumps) */
+.order-bump-premium {
+  background: rgba(14, 11, 8, 0.45);
+  border: 1px dashed rgba(212, 175, 55, 0.2);
+  transition: background 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+.order-bump-premium:hover {
+  background: rgba(22, 17, 12, 0.8);
+  border-style: solid;
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.06);
+}
+
+/* ─── LUXURY FRAME ───────────────────────────────────────── */
+.luxury-frame { position: relative; }
+.luxury-frame::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  pointer-events: none;
+}
+
+/* ─── HOVER GLOW ─────────────────────────────────────────── */
+.glow-gold-hover {
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.45s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+.glow-gold-hover:hover {
+  box-shadow: var(--gold-glow-hi);
+  border-color: var(--gold-border-hi);
+  transform: translateY(-4px) scale(1.008);
+}
+
+/* ─── PARTÍCULAS CHAMPAGNE (FLUTUANDO COM BLUR) ───────────── */
+@keyframes luxuryFloat {
+  0%   { transform: translateY(0) scale(0.9);   opacity: 0; }
+  15%  { opacity: 0.65; }
+  85%  { opacity: 0.25; }
+  100% { transform: translateY(-98vh) scale(0.4); opacity: 0; }
+}
+.champagne-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 229, 171, 0.85) 0%, rgba(212, 175, 55, 0.2) 50%, transparent 80%);
+  pointer-events: none;
+  filter: blur(1px);
+  will-change: transform, opacity;
+}
+
+/* ─── MARQUEE DEPOIMENTOS DE ALTO RENDIMENTO ─────────────── */
+.testi-marquee-container { overflow: hidden; position: relative; contain: layout paint; }
+.testi-marquee-track {
+  display: flex;
+  gap: 1.8rem;
+  width: max-content;
+  animation: scrollMarquee 58s linear infinite; /* Hipnotic slow scroll */
+  will-change: transform;
+  contain: layout;
+}
+.testi-marquee-container:hover .testi-marquee-track { animation-play-state: paused; }
+@keyframes scrollMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── VÍDEO ASPECT RATIO ─────────────────────────────────── */
+.video-ratio-tiktok {
+  position: relative;
+  width: 100%;
+  padding-bottom: 177.78%;
+  background: #000;
+}
+.video-ratio-tiktok iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ─── SEÇÃO BASE ─────────────────────────────────────────── */
+.section-base {
+  padding-block: var(--section-py);
+  position: relative;
+  overflow: hidden;
+  contain: layout; /* PERF: isola reflows internos */
+}
+
+.container-site {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+  position: relative;
+  z-index: 10;
+}
+
+/* ─── MOVING WHITE GLOW ANIMATION ──────────────────────── */
+@keyframes whiteGlowMove {
+  0% {
+    transform: translate(-10%, -10%) scale(1);
+    opacity: 0.55;
+  }
+  25% {
+    transform: translate(12%, -6%) scale(1.15);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-6%, 12%) scale(0.92);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(8%, 8%) scale(1.1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-10%, -10%) scale(1);
+    opacity: 0.55;
+  }
+}
+
+.luz-branca-movimento {
+  animation: whiteGlowMove 11s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* ─── INDICADOR CHOCANTE DO CLICK (ATTRACT GLOW) ─── */
+@keyframes clickAttract {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+.animate-attract-glow {
+  animation: clickAttract 2.2s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ─── ALL SYNCHRONOUS GLOW FOR SYLLABUS INDICATORS ─── */
+@keyframes allGlowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.chase-indicator-1,
+.chase-indicator-2,
+.chase-indicator-3,
+.chase-indicator-4,
+.chase-indicator-5,
+.chase-indicator-6 {
+  animation: allGlowPulse 2.0s infinite ease-in-out !important;
+  will-change: transform, opacity;
+}
+
+/* ─── CORRENDO LUZ DOURADA (RUNNING BORDER LIGHT EFFECT) ─── */
+@keyframes borderGlowRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-glow-rotate {
+  animation: borderGlowRotate 8s linear infinite;
+  will-change: transform;
+}
+
+/* ─── HERO VIDEO PLAYER ─── */
+@keyframes playButtonPulse {
+  0%   { box-shadow: 0 0 0 0px rgba(212, 175, 55, 0.4); }
+  70%  { box-shadow: 0 0 0 16px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0px rgba(212, 175, 55, 0); }
+}
+
+@keyframes rotateBorder {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes blinkIcon {
+  0%, 100% { opacity: 1;    transform: scale(1.05); }
+  50%       { opacity: 0.35; transform: scale(0.9);  }
+}
+
+.pulse-play-btn {
+  animation: playButtonPulse 2.5s infinite ease-in-out;
+}
+
+.rotating-border {
+  animation: rotateBorder 5s linear infinite;
+  will-change: transform;
+}
+
+.blinking-play-icon {
+  animation: blinkIcon 1s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ─── OFFER CHECKOUT ANIMATIONS ─── */
+@keyframes countdownPulse {
+  0%, 100% { opacity: 1;    transform: scale(1); }
+  50%       { opacity: 0.75; transform: scale(0.97); }
+}
+
+@keyframes digitalFlicker {
+  0%, 97%, 100% { opacity: 1; }
+  98%            { opacity: 0.85; }
+  99%            { opacity: 0.95; }
+}
+
+@keyframes offerCardGlow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(201, 147, 58, 0.15), 0 0 0 1px rgba(201, 147, 58, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(201, 147, 58, 0.28), 0 0 0 1px rgba(201, 147, 58, 0.35);
+  }
+}
+
+.countdown-digit {
+  animation: digitalFlicker 8s infinite;
+  font-variant-numeric: tabular-nums;
+}
+
+.offer-card-glow {
+  animation: offerCardGlow 3s ease-in-out infinite;
+}
+
+/* ─── ADDITIONAL OFFER CHECKOUT STYLES ─── */
+@keyframes rotate-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-hand-fast {
+  animation: rotate-clockwise 1.5s linear infinite;
+  animation-play-state: paused;
+  transform-origin: 100px 65px;
+  will-change: transform;
+}
+.animate-hand-fast.is-playing { animation-play-state: running; }
+
+.animate-hand-medium {
+  animation: rotate-clockwise 10s linear infinite;
+  animation-play-state: paused;
+  transform-origin: 65px 100px;
+  will-change: transform;
+}
+.animate-hand-medium.is-playing { animation-play-state: running; }
+
+.animate-hand-main {
+  animation: rotate-clockwise 45s linear infinite;
+  animation-play-state: paused;
+  transform-origin: 100px 100px;
+  will-change: transform;
+}
+.animate-hand-main.is-playing { animation-play-state: running; }
+@keyframes light-glow {
+  0%, 100% { opacity: 0.15; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.35; transform: scale(1.1) rotate(5deg); }
+}
+.animate-beam-glow {
+  animation: light-glow 12s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes label-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.blink-dot-premium {
+  animation: label-blink 1.2s infinite;
+}
+
+/* ─── BEAMS BACKGROUND (Testimonials section) ─── */
+@keyframes beamSlide1 {
+  0%, 100% { transform: skewX(-30deg) translateY(0%); opacity: 0.6; }
+  50%       { transform: skewX(-30deg) translateY(-8%); opacity: 1; }
+}
+@keyframes beamSlide2 {
+  0%, 100% { transform: skewX(-28deg) translateY(0%); opacity: 0.5; }
+  33%       { transform: skewX(-28deg) translateY(-12%); opacity: 0.9; }
+  66%       { transform: skewX(-28deg) translateY(6%); opacity: 0.4; }
+}
+@keyframes beamSlide3 {
+  0%, 100% { transform: skewX(-32deg) translateY(0%); opacity: 0.45; }
+  40%       { transform: skewX(-32deg) translateY(-10%); opacity: 0.85; }
+}
+@keyframes beamSlide4 {
+  0%, 100% { transform: skewX(-26deg) translateY(0%); opacity: 0.4; }
+  60%       { transform: skewX(-26deg) translateY(-15%); opacity: 0.75; }
+}
+@keyframes beamGlow {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* ─── HERO VIDEO PLAY BUTTON HOVER ─── */
+.play-btn-circle {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.play-btn-circle:hover {
+  transform: scale(1.06) !important;
+  box-shadow: 0 0 32px rgba(212, 175, 55, 0.95), inset 0 0 14px rgba(212, 175, 55, 0.35) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .testi-marquee-track {
+    animation: none !important;
+  }
+
+  .fio-de-luz::after {
+    animation: none !important;
+  }
+
+  .luz-aurora-ouro {
+    animation: none !important;
+  }
+
+  .champagne-sparkle {
+    animation: none !important;
+    display: none !important;
+  }
+}
+
+/* ─── PERF: Mobile GPU Optimizations ─── */
+@media (max-width: 768px) {
+  .glass-luxury,
+  .glass-luxury-interactive {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    /* Compensar visualmente com fundo mais opaco */
+    background: rgba(6, 5, 4, 0.92) !important;
+  }
+
+  /* Desativa animações pesadas de blur/conic-gradient no mobile para manter 60 FPS */
+  .luz-branca-movimento,
+  .animate-border-glow-rotate {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Esconde partículas além das 2 primeiras em mobile */
+  .champagne-sparkle:nth-child(n+4) {
+    display: none !important;
+  }
+}
