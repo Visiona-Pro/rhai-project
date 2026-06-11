@@ -3,13 +3,19 @@ import ObrigadoTopBar from "../components/obrigado/TopBar";
 import ObrigadoHeroSection from "../components/obrigado/HeroSection";
 import ObrigadoVideoSection from "../components/obrigado/VideoSection";
 import ObrigadoOfferSection from "../components/obrigado/OfferSection";
+import ObrigadoErrorBoundary from "../components/obrigado/ErrorBoundary";
 
 export default function ObrigadoPage() {
   useEffect(() => {
+    // Bloqueia indexação desta página
     const meta = document.createElement("meta");
     meta.name = "robots";
     meta.content = "noindex, nofollow";
     document.head.appendChild(meta);
+
+    // Pixel: ViewContent — Meta usa esse evento pra saber quem chegou no upsell
+    try { window.fbq?.("track", "ViewContent"); } catch {}
+
     return () => { document.head.removeChild(meta); };
   }, []);
   return (
@@ -22,11 +28,13 @@ export default function ObrigadoPage() {
 
       <ObrigadoTopBar />
 
-      <main className="relative w-full flex flex-col gap-0 pb-0">
-        <ObrigadoHeroSection />
-        <ObrigadoVideoSection />
-        <ObrigadoOfferSection />
-      </main>
+      <ObrigadoErrorBoundary>
+        <main className="relative w-full flex flex-col gap-0 pb-0">
+          <ObrigadoHeroSection />
+          <ObrigadoVideoSection />
+          <ObrigadoOfferSection />
+        </main>
+      </ObrigadoErrorBoundary>
     </div>
   );
 }
