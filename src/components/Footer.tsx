@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ImageUpload from './ImageUpload';
 import logoImg from '../assets/images/regenerated_image_1780461859488.webp';
 
@@ -33,6 +34,13 @@ const Footer = React.memo(function Footer() {
           <span className="text-[9px] sm:text-[0.65rem]">
             © {new Date().getFullYear()} RHAIANE PIMENTA • TODOS OS DIREITOS RESERVADOS
           </span>
+          <span className="hidden sm:inline text-gray-700">•</span>
+          <Link
+            to="/privacidade"
+            className="text-[9px] sm:text-[0.65rem] text-gray-600 hover:text-[#c4a34f] transition-colors"
+          >
+            POLÍTICA DE PRIVACIDADE
+          </Link>
         </div>
 
       </div>

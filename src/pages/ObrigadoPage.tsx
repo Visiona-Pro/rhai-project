@@ -13,8 +13,10 @@ export default function ObrigadoPage() {
     meta.content = "noindex, nofollow";
     document.head.appendChild(meta);
 
-    // Pixel: ViewContent — Meta usa esse evento pra saber quem chegou no upsell
-    try { window.fbq?.("track", "ViewContent"); } catch {}
+    // Pixel: ViewContent — dispara só se usuário já consentiu
+    try {
+      if (typeof window.fbq === "function") window.fbq("track", "ViewContent");
+    } catch {}
 
     return () => { document.head.removeChild(meta); };
   }, []);
