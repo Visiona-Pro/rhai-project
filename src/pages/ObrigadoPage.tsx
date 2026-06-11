@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import ObrigadoTopBar from "../components/obrigado/TopBar";
 import ObrigadoHeroSection from "../components/obrigado/HeroSection";
 import ObrigadoVideoSection from "../components/obrigado/VideoSection";
 import ObrigadoOfferSection from "../components/obrigado/OfferSection";
 
 export default function ObrigadoPage() {
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+    return () => { document.head.removeChild(meta); };
+  }, []);
   return (
     <div className="relative w-full bg-[#050505] text-[#e5e7eb] font-sans antialiased overflow-x-hidden pb-12">
 
