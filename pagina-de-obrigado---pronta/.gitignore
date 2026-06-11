@@ -1,0 +1,15 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Arquivos gerados pelos scripts de build — não commitar
+public/favicon.png
+public/apple-touch-icon.png
+public/og-image-optimized.jpg
+src/assets/images/regenerated_image_1780716160590.webp
+

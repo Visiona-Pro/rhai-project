@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obrigada! Sua compra foi confirmada — Rhaiane Pimenta</title>
+    <meta name="description" content="Obrigada pela sua compra — acesse agora sua oferta exclusiva Café sem Migalhas com Rhaiane Pimenta." />
+    <meta name="theme-color" content="#050505" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Content Security Policy (CSP) for security shielding -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://www.googletagmanager.com https://connect.facebook.net https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://connect.facebook.net https://pay.kiwify.com.br https://members.kiwify.com.br ws: wss:; frame-src 'self' https://pay.kiwify.com.br;" />
+
+    <!-- Open Graph / Facebook (Image 1200x630 using project cafe_sem_migalhas as base) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%APP_URL%/obrigada" />
+    <meta property="og:title" content="Obrigada! Sua compra foi confirmada — Rhaiane Pimenta" />
+    <meta property="og:description" content="Obrigada pela sua compra — acesse agora sua oferta exclusiva Café sem Migalhas com Rhaiane Pimenta." />
+    <meta property="og:image" content="%APP_URL%/og-image-optimized.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="%APP_URL%/obrigada" />
+    <meta name="twitter:title" content="Obrigada! Sua compra foi confirmada — Rhaiane Pimenta" />
+    <meta name="twitter:description" content="Obrigada pela sua compra — acesse agora sua oferta exclusiva Café sem Migalhas com Rhaiane Pimenta." />
+    <meta name="twitter:image" content="%APP_URL%/og-image-optimized.jpg" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="%APP_URL%/obrigada" />
+
+    <!-- Favicon and Apple Touch Icon support -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+
+    <!-- Stylesheet assíncrono: Playfair Display Font (Primary display styling) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" media="print" onload="this.media='all'" />
+
+    <!-- Stylesheet assíncrono: Inter Font (Secondary element use) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+
+    <!-- Noscript fallbacks inside head in case JS is disabled -->
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    </noscript>
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_TRACKING_ID%"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '%VITE_GA_TRACKING_ID%'); // Substitua com o seu ID de métricas do GA4
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '%VITE_META_PIXEL_ID%'); // Substitua com o seu número de Pixel da Meta
+      fbq('track', 'PageView');
+      fbq('track', 'ViewContent'); // Evento de visualização de oferta automática ao carregar a página
+    </script>
+  </head>
+  <body>
+    <!-- Meta Pixel Fallback Element for No-JS Browsers -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=%VITE_META_PIXEL_ID%&ev=PageView&noscript=1" />
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
