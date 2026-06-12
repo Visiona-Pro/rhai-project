@@ -4,6 +4,7 @@ import ObrigadoHeroSection from "../components/obrigado/HeroSection";
 import ObrigadoVideoSection from "../components/obrigado/VideoSection";
 import ObrigadoOfferSection from "../components/obrigado/OfferSection";
 import ObrigadoErrorBoundary from "../components/obrigado/ErrorBoundary";
+import { firePixelEvent } from "../hooks/usePixelConsent";
 
 export default function ObrigadoPage() {
   useEffect(() => {
@@ -13,10 +14,8 @@ export default function ObrigadoPage() {
     meta.content = "noindex, nofollow";
     document.head.appendChild(meta);
 
-    // Pixel: ViewContent — dispara só se usuário já consentiu
-    try {
-      if (typeof window.fbq === "function") window.fbq("track", "ViewContent");
-    } catch {}
+    // ViewContent — só dispara com consentimento; init é garantido antes pelo firePixelEvent
+    try { firePixelEvent("ViewContent"); } catch {}
 
     return () => { document.head.removeChild(meta); };
   }, []);

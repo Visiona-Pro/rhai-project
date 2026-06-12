@@ -67,7 +67,7 @@ export default function PrivacidadePage() {
                 <strong className="text-gray-300">Kiwify</strong> — plataforma de pagamento e entrega dos produtos
               </li>
               <li>
-                <strong className="text-gray-300">Panda Video</strong> — hospedagem dos vídeos do curso
+                <strong className="text-gray-300">YouTube (Google LLC)</strong> — hospedagem dos vídeos do curso (política de privacidade: google.com/policies/privacy)
               </li>
             </ul>
             <p className="mt-2">Não vendemos seus dados a terceiros.</p>

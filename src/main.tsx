@@ -1,9 +1,9 @@
-import { StrictMode, lazy, Suspense } from 'react';
+import { StrictMode, lazy, Suspense, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import App from './App.tsx';
 import CookieConsent from './components/CookieConsent.tsx';
-import { usePixelConsent } from './hooks/usePixelConsent.ts';
+import { usePixelConsent, trackPageView } from './hooks/usePixelConsent.ts';
 import './index.css';
 
 const ObrigadoPage  = lazy(() => import('./pages/ObrigadoPage.tsx'));
@@ -11,6 +11,17 @@ const PrivacidadePage = lazy(() => import('./pages/PrivacidadePage.tsx'));
 
 function Root() {
   usePixelConsent();
+  const location = useLocation();
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    trackPageView();
+  }, [location.pathname]);
+
   return (
     <>
       <Routes>

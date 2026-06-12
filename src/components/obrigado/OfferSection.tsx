@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import ObrigadoBenefitList from "./BenefitList";
+import { firePixelEvent } from "../../hooks/usePixelConsent";
 import offerImage from "../../assets/images/regenerated_image_1780716160590.png";
 import {
   CHECKOUT_URL,
@@ -112,7 +113,7 @@ export default function ObrigadoOfferSection() {
                   rel="noopener noreferrer"
                   onClick={() => {
                     if (typeof window !== "undefined") {
-                      try { window.fbq?.("track", "InitiateCheckout"); } catch {}
+                      try { firePixelEvent("InitiateCheckout"); } catch {}
                       try {
                         window.gtag?.("event", "begin_checkout", {
                           value: Number(PRICE_CASH),

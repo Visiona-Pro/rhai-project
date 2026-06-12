@@ -3,6 +3,16 @@
 // Testado em: 320px | 768px | 1280px
 import React, { useState, useEffect, useRef } from 'react';
 import { CopyAngle } from '../App';
+import { firePixelEvent } from '../hooks/usePixelConsent';
+
+const _DEFAULT_MAIN_CHECKOUT = "https://pay.kiwify.com.br/QZs39JM";
+const _rawMain = (import.meta.env.VITE_MAIN_CHECKOUT_URL as string) || _DEFAULT_MAIN_CHECKOUT;
+const MAIN_CHECKOUT_URL = (() => {
+  try {
+    const p = new URL(_rawMain);
+    return p.protocol === "https:" && p.hostname.endsWith("kiwify.com.br") ? _rawMain : _DEFAULT_MAIN_CHECKOUT;
+  } catch { return _DEFAULT_MAIN_CHECKOUT; }
+})();
 import { motion, AnimatePresence, useInView } from 'motion/react';
 import { Check } from 'lucide-react';
 import ImageUpload from './ImageUpload';
@@ -938,10 +948,13 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.3 }}
                 id="checkout-cta-btn"
-                href="https://pay.kiwify.com.br/QZs39JM"
+                href={MAIN_CHECKOUT_URL}
                 target="_self"
                 rel="noopener noreferrer"
-                onClick={() => setIsRedirecting(true)}
+                onClick={() => {
+                  setIsRedirecting(true);
+                  try { firePixelEvent('InitiateCheckout'); } catch {}
+                }}
                 className="btn-glitter-gold w-full text-center block cursor-pointer"
                 style={{ marginTop: '19px' }}
               >

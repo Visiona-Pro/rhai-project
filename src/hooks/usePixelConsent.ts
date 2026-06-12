@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const PIXEL_ID = "2279783359459191";
+export const PIXEL_ID = "2279783359459191";
 const CONSENT_KEY = "cookie_consent";
 
 export type ConsentStatus = "accepted" | "declined" | null;
@@ -19,33 +19,63 @@ export function setConsentStatus(status: "accepted" | "declined") {
   } catch {}
 }
 
-function initPixel() {
+function hasFbeventsScript(): boolean {
+  return !!document.querySelector('script[src*="fbevents.js"]');
+}
+
+// Garante que fbq("init") sempre precede qualquer fbq("track") na fila,
+// independente da ordem de execução dos efeitos React (filhos antes de pais).
+// fbevents.js ignora chamadas duplicadas de init com o mesmo pixel ID.
+export function firePixelEvent(event: string, data?: Record<string, unknown>) {
+  if (getConsentStatus() === "declined") return;
+  if (typeof window.fbq !== "function") return;
+  window.fbq("init", PIXEL_ID);
+  window.fbq("track", event, data);
+}
+
+export function initPixel(options?: { pageView?: boolean }) {
   if (typeof window === "undefined") return;
-  // Carrega fbevents.js dinamicamente após consentimento
-  const existing = document.querySelector('script[src*="fbevents.js"]');
-  if (!existing) {
+  if (getConsentStatus() === "declined") return;
+
+  const hadFbevents = hasFbeventsScript();
+
+  if (!hadFbevents) {
     const script = document.createElement("script");
     script.async = true;
     script.src = "https://connect.facebook.net/en_US/fbevents.js";
     document.head.appendChild(script);
   }
+
   window.fbq?.("init", PIXEL_ID);
-  window.fbq?.("track", "PageView");
+
+  const shouldTrackPageView = options?.pageView ?? !hadFbevents;
+  if (shouldTrackPageView) {
+    window.fbq?.("track", "PageView");
+  }
 }
 
-// Inicializa pixel se já houver consentimento salvo
+// Fallback: garante pixel se fbpixel.js não carregou (ex.: bloqueador parcial)
 export function usePixelConsent() {
   useEffect(() => {
-    if (getConsentStatus() === "accepted") {
-      initPixel();
+    if (getConsentStatus() === "declined") return;
+    if (!hasFbeventsScript()) {
+      initPixel({ pageView: true });
     }
   }, []);
 }
 
-// Chamado pelo banner ao aceitar
+// Dispara PageView a cada troca de rota (SPA navigation)
+export function trackPageView() {
+  if (getConsentStatus() === "declined") return;
+  if (typeof window.fbq !== "function") return;
+  window.fbq("track", "PageView");
+}
+
+// Chamado pelo banner ao aceitar (ex.: usuário havia recusado antes)
 export function acceptConsent() {
+  const hadFbevents = hasFbeventsScript();
   setConsentStatus("accepted");
-  initPixel();
+  initPixel({ pageView: !hadFbevents });
 }
 
 // Chamado pelo banner ao recusar

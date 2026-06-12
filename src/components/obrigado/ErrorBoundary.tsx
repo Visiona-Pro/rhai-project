@@ -1,5 +1,6 @@
 import { Component, ErrorInfo, ReactNode } from "react";
 import { CHECKOUT_URL } from "../../config/obrigado";
+import { getConsentStatus } from "../../hooks/usePixelConsent";
 
 interface Props { children?: ReactNode; }
 interface State { hasError: boolean; }
@@ -16,7 +17,9 @@ export default class ObrigadoErrorBoundary extends Component<Props, State> {
       console.error("ObrigadoErrorBoundary:", error, errorInfo);
     }
     try {
-      window.fbq?.("trackCustom", "AppCrash", { errorMessage: error?.message });
+      if (getConsentStatus() === "accepted") {
+        window.fbq?.("trackCustom", "AppCrash", { errorMessage: error?.message });
+      }
     } catch {}
   }
 
