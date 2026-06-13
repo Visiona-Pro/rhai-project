@@ -167,7 +167,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
       badge:    'Psicologia Cognitiva Masculina · Exclusivo',
       h1a:      'Porque Eles Perdem',
       h1b:      'o Interesse',
-      sub:      '...e como virar o jogo sem se humilhar.',
+      sub:      '… e como virar o jogo sem se humilhar. Assista e entenda:',
       desc:     'No começo, ele mandava mensagem. Corria atrás. Investia. Depois esfriou do nada! Você não fez nada de errado. Só nunca te explicaram como a mente masculina funciona.',
       cta:      'Ativar o Protocolo Agora',
     },
@@ -292,8 +292,27 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
               style={{ marginTop: '-19px' }}
             />
 
-            {/* Descrição */}
-            {/* CORRIGIDO: Removida largura física fixa de 578px e estilos de fontes redundantes */}
+            {/* Vídeo — apenas mobile */}
+            <div className="block md:hidden w-full">
+              <div
+                className="relative mx-auto"
+                style={{ width: 'min(284px, 100%)', aspectRatio: '284/484' }}
+              >
+                <div className="absolute -inset-16 bg-[radial-gradient(circle,rgba(255,255,255,0.10)_0%,rgba(240,240,240,0.04)_50%,transparent_80%)] rounded-full blur-[45px] z-0 pointer-events-none luz-branca-movimento" />
+                <div className="absolute -inset-8 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,transparent_70%)] rounded-full blur-[35px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-3s', animationDuration: '8s' }} />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] bg-[radial-gradient(circle,rgba(196,163,79,0.06)_0%,transparent_70%)] blur-[55px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-1.5s', animationDuration: '14s' }} />
+                <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
+                  <VturbPlayer
+                    src="https://pub-376e95972e5d4a7c80693b50c84d09e4.r2.dev/VSL_web_v2.mp4"
+                    containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
+                    disablePause
+                  />
+                </div>
+                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-40 h-12 bg-[#c4a34f]/10 rounded-full blur-[30px] pointer-events-none z-0" />
+              </div>
+            </div>
+
+            {/* Descrição — apenas desktop */}
             <AnimatePresence mode="wait">
               <motion.p
                 key={activeAngle + '-desc'}
@@ -301,7 +320,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.55, delay: 0.15 }}
-                className="font-sans text-[0.82rem] sm:text-[0.9rem] text-[#FAF9F6]/75 max-w-xl font-light whitespace-pre-line text-justify mb-1.5 sm:mb-2.5"
+                className="hidden md:block font-sans text-[0.82rem] sm:text-[0.9rem] text-[#FAF9F6]/75 max-w-xl font-light whitespace-pre-line text-justify mb-1.5 sm:mb-2.5"
                 style={{ maxWidth: '400px', width: '100%', fontSize: '13px', lineHeight: '18px' }}
               >
                 {c.desc}
@@ -385,13 +404,12 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
             </motion.div>
           </div>
  
-          {/* Coluna direita — vídeo */}
-          {/* CORRIGIDO: Removido dimensões rígidas (width: 481px, height: 612px) e margens negativas que desalinhavam o vídeo */}
+          {/* Coluna direita — vídeo (desktop only) */}
           <motion.div
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-center w-full max-w-full mt-2.5 md:mt-0 lg:-mt-2"
+            className="hidden md:flex justify-center w-full max-w-full mt-2.5 md:mt-0 lg:-mt-2"
           >
             <div 
               className="relative mx-auto"
