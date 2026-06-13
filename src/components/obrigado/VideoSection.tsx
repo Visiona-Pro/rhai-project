@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { VturbPlayer } from "./VturbPlayer";
 
 export default function ObrigadoVideoSection() {
   return (
@@ -9,12 +10,7 @@ export default function ObrigadoVideoSection() {
       className="relative px-4 pt-6 pb-2 max-w-3xl mx-auto z-10 w-full"
       aria-label="Vídeo de apresentação da oferta"
     >
-      <video
-        src="/VSL.mp4"
-        className="w-full aspect-video"
-        controls
-        playsInline
-      />
+      <VturbPlayer src="/UPSELL.mov" />
     </motion.section>
   );
 }

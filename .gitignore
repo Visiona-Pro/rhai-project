@@ -7,3 +7,12 @@ coverage/
 .env*
 !.env.example
 .vercel
+
+# Vídeos — hospedados no Cloudflare R2
+*.mp4
+*.mov
+
+# Arquivos pessoais e artefatos locais
+_private/
+_removed/
+core.*

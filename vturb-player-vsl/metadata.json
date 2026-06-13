@@ -1,0 +1,6 @@
+{
+  "name": "VTurb Player VSL",
+  "description": "Video player style VTurb with psychological progress bar and autoplay muted GIF style.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

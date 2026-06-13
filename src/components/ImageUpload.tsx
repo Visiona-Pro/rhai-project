@@ -20,6 +20,8 @@ export default function ImageUpload({
 }: ImageUploadProps) {
   // Listen to a custom window event for instant edit mode state matching
   const [isEditMode, setIsEditMode] = useState<boolean>(() => {
+    // Modo de edição disponível apenas em desenvolvimento
+    if (!import.meta.env.DEV) return false;
     if (typeof window !== 'undefined') {
       const searchParam = new URLSearchParams(window.location.search).get('edit');
       if (searchParam === '1') {

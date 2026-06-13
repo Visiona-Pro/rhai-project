@@ -16,10 +16,6 @@ const Footer        = lazy(() => import('./components/Footer'));
 
 export type CopyAngle = 'attention' | 'whatsapp' | 'unequal';
 
-function formatTime(num: number): string {
-  return String(num).padStart(2, '0');
-}
-
 export default function App() {
   const activeAngle: CopyAngle = 'attention';
 
@@ -68,12 +64,6 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const { hrs, mins, secs } = React.useMemo(() => ({
-    hrs:  Math.floor(secondsRemaining / 3600),
-    mins: Math.floor((secondsRemaining % 3600) / 60),
-    secs: secondsRemaining % 60,
-  }), [secondsRemaining]);
-
   const scrollToOffer = React.useCallback(() => {
     const el = document.getElementById('oferta-section');
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -81,33 +71,6 @@ export default function App() {
 
   return (
     <div className="relative bg-black min-h-screen text-[#FAF9F6] antialiased overflow-x-hidden">
-
-      {/* Sticky bar de urgência */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-[#C8A96B]/15 px-4 py-1.5 flex items-center justify-center gap-3 flex-wrap shadow-md">
-        <div className="flex items-center gap-2 flex-wrap justify-center">
-          <span className="text-[0.72rem] sm:text-xs text-[#FAF9F6] bg-[rgba(201,147,58,0.06)] border border-[rgba(201,147,58,0.22)] px-2 py-0.5 tracking-wider font-bold flex items-center gap-1.5 rounded-none shadow-[0_0_10px_rgba(201,147,58,0.1)]">
-            <span className="relative flex h-1 w-1">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c9933a] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1 w-1 bg-[#c9933a]"></span>
-            </span>
-            <span className="text-[#f2ece0] font-bold tabular-nums" style={{ fontFamily: "'Playfair Display', serif" }}>{formatTime(hrs)}</span>
-            <span className="text-[rgba(201,147,58,0.4)] animate-pulse font-serif">:</span>
-            <span className="text-[#f2ece0] font-bold tabular-nums" style={{ fontFamily: "'Playfair Display', serif" }}>{formatTime(mins)}</span>
-            <span className="text-[rgba(201,147,58,0.4)] animate-pulse font-serif">:</span>
-            <span className="text-[#f2ece0] font-bold tabular-nums" style={{ fontFamily: "'Playfair Display', serif" }}>{formatTime(secs)}</span>
-          </span>
-        </div>
-        <button
-          type="button"
-          onClick={scrollToOffer}
-          className="font-sans text-[0.54rem] sm:text-[0.6rem] tracking-[0.16em] uppercase text-black bg-gradient-to-r from-[#e5c158] via-[#FFF5C3] to-[#b89030] px-3.5 py-1 cursor-pointer font-extrabold rounded-[4px] shadow-[0_0_10px_rgba(229,193,88,0.3)] hover:shadow-[0_0_18px_rgba(229,193,88,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse"
-          style={{ animationDuration: '3s' }}
-        >
-          Seu Bônus Aqui →
-        </button>
-      </div>
-
-      <div className="h-9 sm:h-10" />
 
       {/* Hero: seções renderizadas imediatamente sem lag ou shift estrutural */}
       <Hero onCtaClick={scrollToOffer} activeAngle={activeAngle} />

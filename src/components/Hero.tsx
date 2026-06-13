@@ -1,7 +1,9 @@
 import React from 'react';
+import { VturbPlayer } from './obrigado/VturbPlayer';
 import { motion, AnimatePresence } from 'motion/react';
 import { CopyAngle } from '../App';
 import ImageUpload from './ImageUpload';
+
 
 interface HeroProps {
   onCtaClick: () => void;
@@ -25,21 +27,6 @@ const STYLES = {
     fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: '9.5px',
     color: 'rgba(242,236,224,0.45)', letterSpacing: '0.04em', whiteSpace: 'nowrap',
   } as React.CSSProperties,
-  videoPlayerText: {
-    fontFamily: "'Inter', sans-serif", fontSize: '10px', fontWeight: 500,
-    color: 'rgba(242,236,224,0.5)', marginTop: '14px',
-  } as React.CSSProperties,
-  videoFooterLabel: {
-    fontFamily: "'Playfair Display', Georgia, serif", fontStyle: 'italic',
-    fontSize: '12px', color: 'rgba(201,147,58,0.6)', letterSpacing: '0.15em',
-  } as React.CSSProperties,
-  playBtnInner: {
-    background: 'radial-gradient(circle at center, #0F0E0B 0%, #020202 100%)',
-  } as React.CSSProperties,
-  playBtnConic: {
-    background: 'conic-gradient(from 0deg, transparent 40%, rgba(212, 175, 55, 0.15) 50%, #ffe066 80%, #f1c40f 95%, #ffe066 100%)',
-    pointerEvents: 'none' as React.CSSProperties['pointerEvents'],
-  } as React.CSSProperties,
 } as const;
 
 // Partículas discretas: tamanho máximo 4px, movimento lento
@@ -52,8 +39,9 @@ const PARTICLES: { left: string; w: string; animStyle: React.CSSProperties }[] =
 ];
 
 const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
-  const [isPlaying, setIsPlaying] = React.useState(false);
   const [isEditMode, setIsEditMode] = React.useState<boolean>(() => {
+    // Modo de edição disponível apenas em desenvolvimento
+    if (!import.meta.env.DEV) return false;
     if (typeof window !== 'undefined') {
       const searchParam = new URLSearchParams(window.location.search).get('edit');
       if (searchParam === '1') {
@@ -412,125 +400,21 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
                 aspectRatio: '284/484'
               }}
             >
-              {/* Brilhos e efeitos de luz BRANCA que se movem por trás do vídeo */}
-              <div className="absolute -inset-16 bg-[radial-gradient(circle,rgba(255,255,255,0.42)_0%,rgba(240,240,240,0.15)_50%,transparent_80%)] rounded-full blur-[45px] z-0 pointer-events-none luz-branca-movimento" />
-              <div className="absolute -inset-8 bg-[radial-gradient(circle,rgba(255,255,255,0.32)_0%,transparent_70%)] rounded-full blur-[35px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-3s', animationDuration: '8s' }} />
-              <div className="absolute -inset-4 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-[18px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-6s', animationDuration: '4.5s' }} />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] bg-[radial-gradient(circle,rgba(255,255,255,0.18)_0%,transparent_70%)] blur-[55px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-1.5s', animationDuration: '14s' }} />
+              {/* Brilhos suaves por trás do vídeo */}
+              <div className="absolute -inset-16 bg-[radial-gradient(circle,rgba(255,255,255,0.10)_0%,rgba(240,240,240,0.04)_50%,transparent_80%)] rounded-full blur-[45px] z-0 pointer-events-none luz-branca-movimento" />
+              <div className="absolute -inset-8 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,transparent_70%)] rounded-full blur-[35px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-3s', animationDuration: '8s' }} />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] bg-[radial-gradient(circle,rgba(196,163,79,0.06)_0%,transparent_70%)] blur-[55px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-1.5s', animationDuration: '14s' }} />
 
-              {/* Frame decorativo offset */}
-              <div className="absolute -inset-2 border border-[#D4AF37]/25 translate-x-1.5 translate-y-1.5 pointer-events-none z-0" />
-              
-              {/* Margem sutil de luz amarela dourada contornando as bordas por trás do vídeo */}
-              <div className="absolute -inset-[3px] bg-gradient-to-r from-[#996515] via-[#D4AF37] to-[#FDF6E2] rounded-none blur-[3px] opacity-75 z-0 pointer-events-none" />
-              <div className="absolute -inset-[8px] bg-[#D4AF37]/25 rounded-none blur-[10px] z-0 pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} />
-
-              {/* Container do vídeo com Player Premium */}
-              <div 
-                className="relative z-10 border border-[#D4AF37]/35 bg-black overflow-hidden shadow-2xl rounded-none mx-auto"
-                style={{
-                  width: 'calc(100% - 6px)',
-                  height: 'calc(100% - 6px)',
-                  margin: '3px auto'
-                }}
-              >
-                {!isPlaying ? (
-                  <div 
-                    className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer select-none group"
-                    onClick={() => setIsPlaying(true)}
-                  >
-                    {/* Imagem de Fundo (Poster) desfocada */}
-                    <div 
-                      className="absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-500"
-                      style={{
-                        backgroundImage: `url('https://viraojogo.mvmlp.com/assets/hero-woman-C7RthVUp.jpg')`,
-                        filter: 'blur(6px) brightness(0.45) saturate(0.7)'
-                      }}
-                    />
-                    
-                    {/* Overlay escuro leve */}
-                    <div className="absolute inset-0 bg-[#07070a]/35 pointer-events-none" />
-
-                    {/* Conteúdo Central */}
-                    <div className="relative z-10 flex flex-col items-center">
-                      {/* Botão de Play */}
-                      <div 
-                        className="pulse-play-btn play-btn-circle relative flex items-center justify-center overflow-hidden"
-                        style={{
-                          width: '76px',
-                          height: '76px',
-                          borderRadius: '50%',
-                          color: '#ffe066',
-                          backgroundColor: 'black',
-                          boxShadow: '0 0 22px rgba(212, 175, 55, 0.75), inset 0 0 10px rgba(212, 175, 55, 0.2)',
-                        }}
-                      >
-                        {/* Rotating yellow outline belt */}
-                        <div 
-                          className="rotating-border absolute inset-0 rounded-full"
-                          style={STYLES.playBtnConic}
-                        />
-
-                        {/* Inner dark circle mask */}
-                        <div 
-                          className="absolute inset-[2px] rounded-full flex items-center justify-center"
-                          style={STYLES.playBtnInner}
-                        />
-
-                        {/* Play Icon */}
-                        <div className="relative z-10 flex items-center justify-center blinking-play-icon">
-                          <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            width="24" 
-                            height="24" 
-                            viewBox="0 0 24 24" 
-                            fill="#ffffff" 
-                            stroke="none" 
-                            style={{ marginLeft: '4px' }}
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-
-                      {/* Texto abaixo do play */}
-                      <span 
-                        className="block text-center tracking-[0.08em] uppercase font-medium"
-                        style={STYLES.videoPlayerText}
-                      >
-                        clique e assista antes de decidir
-                      </span>
-                    </div>
-
-                    {/* Rodapé do Player (bottom overlay) */}
-                    <div 
-                      className="absolute bottom-0 left-0 right-0 h-[60px] pb-5 flex items-end justify-center pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(0deg, rgba(7,7,10,0.85) 0%, transparent 100%)',
-                      }}
-                    >
-                      <span 
-                        style={STYLES.videoFooterLabel}
-                      >
-                        Rhaiane Pimenta
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="absolute inset-0 w-full h-full bg-black">
-                    <iframe
-                      src="https://player-vz-04c66cf5-e3e.tv.pandavideo.com.br/embed/?v=a020b0e8-3fe5-43a3-bacd-d7d8e3c0fb6d&autoplay=true"
-                      title="Rhaiane Pimenta — Apresentação"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="border-none absolute inset-0 w-full h-full"
-                    />
-                  </div>
-                )}
+              <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
+                <VturbPlayer
+                  src="https://pub-376e95972e5d4a7c80693b50c84d09e4.r2.dev/VSL_web_v2.mp4"
+                  containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
+                  disablePause
+                />
               </div>
-  
-              {/* Glow suave BRANCO */}
-              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-44 h-16 bg-white/20 rounded-full blur-[35px] pointer-events-none z-0 luz-branca-movimento" style={{ animationDuration: '5s' }} />
+
+              {/* Glow dourado sutil embaixo */}
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-40 h-12 bg-[#c4a34f]/10 rounded-full blur-[30px] pointer-events-none z-0" />
             </div>
           </motion.div>
 
