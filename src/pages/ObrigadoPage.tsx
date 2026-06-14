@@ -61,7 +61,7 @@ export default function ObrigadoPage() {
             <div className="w-full px-3 sm:px-6 mx-auto flex justify-center">
               <div className="relative h-[64vh] sm:h-[72vh] aspect-[9/16] max-w-full">
                 <VturbPlayer
-                  src="https://pub-376e95972e5d4a7c80693b50c84d09e4.r2.dev/UPSELL_web_v2.mp4"
+                  src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/UPSELL_web_v2.mp4"
                   onTimeUpdate={handleTimeUpdate}
                   onVideoEnded={handleVideoEnded}
                   containerClassName="relative w-full h-full bg-black rounded-lg sm:rounded-xl overflow-hidden shadow-2xl group font-sans"
