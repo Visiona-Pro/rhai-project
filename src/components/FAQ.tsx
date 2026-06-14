@@ -4,6 +4,13 @@
 import React, { useState } from 'react';
 import { FAQS } from '../data';
 
+function renderAnswer(text: string): React.ReactNode {
+  return text.split(/(<strong>.*?<\/strong>)/g).map((part, i) => {
+    const match = part.match(/^<strong>(.*?)<\/strong>$/);
+    return match ? <strong key={i}>{match[1]}</strong> : part;
+  });
+}
+
 const FAQ = React.memo(function FAQ() {
   const [openId, setOpenId] = useState<string>('');
 
@@ -91,10 +98,9 @@ const FAQ = React.memo(function FAQ() {
                   }`}
                 >
                   <div className="py-2.5 px-4 sm:py-3 sm:px-4 bg-black/45 text-left border-t border-white/[0.04]">
-                    <p 
-                      className="font-sans text-xs sm:text-[0.88rem] text-[#f8eeb7] leading-relaxed font-light"
-                      dangerouslySetInnerHTML={{ __html: faq.answer }}
-                    />
+                    <p className="font-sans text-xs sm:text-[0.88rem] text-[#f8eeb7] leading-relaxed font-light">
+                      {renderAnswer(faq.answer)}
+                    </p>
                   </div>
                 </div>
 
