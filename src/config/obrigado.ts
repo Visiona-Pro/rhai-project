@@ -1,5 +1,5 @@
 const DEFAULT_CHECKOUT_URL = "https://pay.kiwify.com.br/KgbOBvS";
-const DEFAULT_MEMBERS_URL = "https://members.kiwify.com.br/cafe-sem-migalhas";
+const DEFAULT_MEMBERS_URL = "https://members.kiwify.com/?club=52753ac9-0a67-4523-95df-6b9b1c642e49";
 
 export const PRICE_INSTALLMENTS = 12;
 export const PRICE_INSTALLMENT_VALUE = "95,15";
@@ -10,7 +10,7 @@ function validateKiwifyUrl(url: string, fallback: string): string {
   try {
     const parsed = new URL(url);
     if (parsed.protocol !== "https:") return fallback;
-    if (!parsed.hostname.endsWith("kiwify.com.br")) return fallback;
+    if (!parsed.hostname.endsWith("kiwify.com.br") && !parsed.hostname.endsWith("kiwify.com")) return fallback;
     return url;
   } catch {
     return fallback;
