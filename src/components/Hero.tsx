@@ -303,7 +303,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] bg-[radial-gradient(circle,rgba(196,163,79,0.06)_0%,transparent_70%)] blur-[55px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-1.5s', animationDuration: '14s' }} />
                 <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
                   <VturbPlayer
-                    src="https://pub-376e95972e5d4a7c80693b50c84d09e4.r2.dev/VSL_web_v2.mp4"
+                    src="https://pub-376e95972e5d4a7c80693b50c84d09e4.r2.dev/VSL_hd.mp4"
                     containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
                     disablePause
                   />
@@ -425,7 +425,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
 
               <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
                 <VturbPlayer
-                  src="https://pub-376e95972e5d4a7c80693b50c84d09e4.r2.dev/VSL_web_v2.mp4"
+                  src="https://pub-376e95972e5d4a7c80693b50c84d09e4.r2.dev/VSL_hd.mp4"
                   containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
                   disablePause
                 />
