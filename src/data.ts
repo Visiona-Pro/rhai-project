@@ -189,7 +189,7 @@ export const OBJECTIONS: Objection[] = [
 export const ORDER_BUMPS: OrderBump[] = [
   {
     id: 'bump-1',
-    image: 'https://viraojogo.mvmlp.com/assets/bump-7-passos-4RPqTi0Q.png',
+    image: '/assets/bump-7-passos.png',
     title: '7 Passos para se Tornar Inesquecível',
     description: '7 dias para despertar sua melhor versão e se tornar a mulher que marca presença por onde passa: mais desejada, admirada e inesquecível.',
     price: '3,92',
@@ -197,7 +197,7 @@ export const ORDER_BUMPS: OrderBump[] = [
   },
   {
     id: 'bump-2',
-    image: 'https://viraojogo.mvmlp.com/assets/bump-magnetismo-2o3GIZRi.png',
+    image: '/assets/bump-magnetismo.png',
     title: 'Magnetismo Digital na Prática',
     description: 'Aprenda as regras de ouro para dominar as redes sociais. Use sua presença online para comunicar desejo, elegância, carisma e atrair o homem certo.',
     price: '3,08',
@@ -205,7 +205,7 @@ export const ORDER_BUMPS: OrderBump[] = [
   },
   {
     id: 'bump-3',
-    image: 'https://viraojogo.mvmlp.com/assets/bump-raio-x-Bmvsz9AB.png',
+    image: '/assets/bump-raio-x.png',
     title: 'Análise Estratégica de Posicionamento (Raio-X)',
     description: 'Vou te mostrar exatamente o que o seu perfil comunica e o que pode estar afastando homens que querem algo sério. Descubra o padrão invisível que o seu perfil está ativando nos homens, sem você perceber.',
     price: '16,49',

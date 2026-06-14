@@ -53,7 +53,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
     return false;
   });
 
-  const DEFAULT_BG = "https://viraojogo.mvmlp.com/assets/hero-woman-C7RthVUp.jpg";
+  const DEFAULT_BG = "/assets/hero-bg.jpg";
   const [heroBg, setHeroBg] = React.useState<string>(DEFAULT_BG);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 

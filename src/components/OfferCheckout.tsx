@@ -260,7 +260,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
         >
           <ImageUpload
             storageKey="img_product_main"
-            defaultSrc="https://viraojogo.mvmlp.com/assets/produto-principal-JTmqJkvc.png"
+            defaultSrc="/assets/produto-principal.png"
             alt="Curso: Porque Eles Perdem o Interesse"
             imgClassName="w-full h-full object-cover"
             wrapperClassName="w-full h-full"
@@ -280,7 +280,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
         >
           <ImageUpload
             storageKey="img_product_bonus"
-            defaultSrc="https://viraojogo.mvmlp.com/assets/produto-bonus-wvfUo_Yp.png"
+            defaultSrc="/assets/produto-bonus.png"
             alt="Bônus: O Gatilho que Vira o Jogo"
             imgClassName="w-full h-full object-cover"
             wrapperClassName="w-full h-full"

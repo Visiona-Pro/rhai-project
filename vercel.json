@@ -15,7 +15,7 @@
         { "key": "Permissions-Policy",         "value": "camera=(), microphone=(), geolocation=()" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://viraojogo.mvmlp.com https://www.facebook.com https://i.ytimg.com; frame-src https://www.youtube.com https://youtube.com https://*.pandavideo.com.br; connect-src 'self' https://connect.facebook.net https://www.facebook.com https://rhaiane-videos-guard.rhaiane-media.workers.dev; media-src 'self' blob: https://rhaiane-videos-guard.rhaiane-media.workers.dev"
+          "value": "default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://i.ytimg.com; frame-src https://www.youtube.com https://youtube.com https://*.pandavideo.com.br; connect-src 'self' https://connect.facebook.net https://www.facebook.com https://rhaiane-videos-guard.rhaiane-media.workers.dev; media-src 'self' blob: https://rhaiane-videos-guard.rhaiane-media.workers.dev"
         }
       ]
     },

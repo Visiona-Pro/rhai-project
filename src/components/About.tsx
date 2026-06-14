@@ -47,7 +47,7 @@ const About = React.memo(function About({ activeAngle }: AboutProps) {
               <div className="relative z-10 w-full h-full p-0.5 sm:p-1 bg-gradient-to-b from-[#D4AF37]/40 via-[#120F0C] to-[#120F0C] rounded-[12px] sm:rounded-[18px] shadow-[0_0_15px_rgba(212,175,55,0.15)] sm:shadow-[0_0_25px_rgba(212,175,55,0.15)] shadow-black/90 overflow-hidden flex items-center justify-center border border-[#D4AF37]/25"> {/* CORRIGIDO: Removida largura/altura fixas e margens negativas que quebram o layout */}
                 <ImageUpload
                   storageKey="img_specialist"
-                  defaultSrc="https://viraojogo.mvmlp.com/assets/specialist-CU_X3ewI.jpg"
+                  defaultSrc="/assets/specialist.jpg"
                   alt="Rhaiane Pimenta"
                   imgClassName="w-full h-full object-cover object-center grayscale-[3%] transition-all duration-700 hover:scale-[1.03] block rounded-[10px] sm:rounded-[14px]"
                   imgProps={{ loading: 'lazy', width: 360, height: 480 }}
