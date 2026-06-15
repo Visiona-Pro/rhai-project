@@ -82,8 +82,7 @@ export default function PrivacidadePage() {
               visualizações de página e cliques em botões de compra) e as envia para a Meta.
             </p>
             <p className="mt-2">
-              O carregamento do Meta Pixel ocorre apenas após seu consentimento expresso por meio do aviso
-              de cookies exibido na primeira visita.
+              O Meta Pixel é carregado automaticamente ao acessar o site.
             </p>
             <p className="mt-2">
               Para mais informações sobre como a Meta usa esses dados, consulte a{" "}

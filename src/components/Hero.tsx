@@ -8,6 +8,8 @@ import ImageUpload from './ImageUpload';
 interface HeroProps {
   onCtaClick: () => void;
   activeAngle: CopyAngle;
+  onMobileReveal?: () => void;
+  mobileRevealed?: boolean;
 }
 
 // Estilos extraídos para fora do componente — criados uma vez, nunca recriados
@@ -38,7 +40,18 @@ const PARTICLES: { left: string; w: string; animStyle: React.CSSProperties }[] =
   { left: '82%', w: '3px', animStyle: { left: '82%', bottom: '-20px', width: '3px', height: '3px', animation: 'luxuryFloat 20s ease-in-out 2s infinite'   } },
 ];
 
-const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
+// 10 minutos e 15 segundos
+const VSL_REVEAL_SECONDS = 615;
+
+const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal, mobileRevealed }: HeroProps) {
+  const mobileRevealFiredRef = React.useRef(false);
+
+  const handleMobileTimeUpdate = React.useCallback((t: number) => {
+    if (!mobileRevealFiredRef.current && t >= VSL_REVEAL_SECONDS) {
+      mobileRevealFiredRef.current = true;
+      onMobileReveal?.();
+    }
+  }, [onMobileReveal]);
   const [isEditMode, setIsEditMode] = React.useState<boolean>(() => {
     // Modo de edição disponível apenas em desenvolvimento
     if (!import.meta.env.DEV) return false;
@@ -286,11 +299,14 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
               </motion.p>
             </AnimatePresence>
 
-            {/* Linha decorativa */}
+            {/* Linha decorativa — mobile: oculta até o reveal */}
+            <div className={mobileRevealed ? 'contents' : 'hidden md:contents'}>
             <div
               className="w-16 h-[2px] bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-transparent"
               style={{ marginTop: '-19px' }}
             />
+
+            </div>{/* fim do wrapper oculto mobile (linha decorativa) */}
 
             {/* Vídeo — apenas mobile */}
             <div className="block md:hidden w-full">
@@ -306,11 +322,15 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
                     src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/VSL_hd.mp4"
                     containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
                     disablePause
+                    onTimeUpdate={handleMobileTimeUpdate}
                   />
                 </div>
                 <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-40 h-12 bg-[#c4a34f]/10 rounded-full blur-[30px] pointer-events-none z-0" />
               </div>
             </div>
+
+            {/* Badge + CTA — mobile: ocultos até o reveal */}
+            <div className={mobileRevealed ? 'contents' : 'hidden md:contents'}>
 
             {/* Descrição — apenas desktop */}
             <AnimatePresence mode="wait">
@@ -402,8 +422,9 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle }: HeroProps) {
                 </div>
               </div>
             </motion.div>
+            </div>{/* fim do wrapper Badge + CTA oculto mobile */}
           </div>
- 
+
           {/* Coluna direita — vídeo (desktop only) */}
           <motion.div
             initial={{ opacity: 0, x: 28 }}

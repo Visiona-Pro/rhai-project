@@ -39,7 +39,7 @@ export function VturbPlayer({ src, onVideoEnded, onTimeUpdate, containerClassNam
     const t = videoRef.current.currentTime;
     setCurrentTime(t);
     if (hasInteracted && t > maxWatchedTime) setMaxWatchedTime(t);
-    if (hasInteracted) onTimeUpdate?.(t);
+    onTimeUpdate?.(t);
   };
 
   const handleInitialClick = (e: React.MouseEvent) => {

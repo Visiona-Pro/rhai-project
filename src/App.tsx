@@ -64,6 +64,12 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const [mobileRevealed, setMobileRevealed] = React.useState(false);
+
+  const handleMobileReveal = React.useCallback(() => {
+    setMobileRevealed(true);
+  }, []);
+
   const scrollToOffer = React.useCallback(() => {
     const el = document.getElementById('oferta-section');
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -73,31 +79,39 @@ export default function App() {
     <div className="relative bg-black min-h-screen text-[#FAF9F6] antialiased overflow-x-hidden">
 
       {/* Hero: seções renderizadas imediatamente sem lag ou shift estrutural */}
-      <Hero onCtaClick={scrollToOffer} activeAngle={activeAngle} />
+      <Hero
+        onCtaClick={scrollToOffer}
+        activeAngle={activeAngle}
+        onMobileReveal={handleMobileReveal}
+        mobileRevealed={mobileRevealed}
+      />
 
-      <PainPoints />
+      {/* Mobile: todo conteúdo abaixo do Hero fica oculto até o 10:15 do vídeo VSL */}
+      <div className={mobileRevealed ? undefined : 'hidden md:block'}>
+        <PainPoints />
 
-      <Suspense fallback={<div aria-hidden="true" style={{minHeight:"100vh"}} />}>
-        <FasesCerebro />
-        
-        <About activeAngle={activeAngle} />
+        <Suspense fallback={<div aria-hidden="true" style={{minHeight:"100vh"}} />}>
+          <FasesCerebro />
 
-        <div className="fio-de-luz" />
+          <About activeAngle={activeAngle} />
 
-        <CourseContent />
-        
-        <Testimonials />
+          <div className="fio-de-luz" />
 
-        <div className="fio-de-luz" />
+          <CourseContent />
 
-        <BeforeAfter />
-        
-        <OfferCheckout activeAngle={activeAngle} secondsRemaining={secondsRemaining} />
-        
-        <FAQ />
-        
-        <Footer />
-      </Suspense>
+          <Testimonials />
+
+          <div className="fio-de-luz" />
+
+          <BeforeAfter />
+
+          <OfferCheckout activeAngle={activeAngle} secondsRemaining={secondsRemaining} />
+
+          <FAQ />
+
+          <Footer />
+        </Suspense>
+      </div>
     </div>
   );
 }

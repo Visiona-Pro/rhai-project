@@ -2,7 +2,6 @@ import { StrictMode, lazy, Suspense, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import App from './App.tsx';
-import CookieConsent from './components/CookieConsent.tsx';
 import { usePixelConsent, trackPageView } from './hooks/usePixelConsent.ts';
 import './index.css';
 
@@ -43,7 +42,6 @@ function Root() {
           }
         />
       </Routes>
-      <CookieConsent />
     </>
   );
 }
