@@ -320,7 +320,6 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
                 <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
                   <VturbPlayer
                     src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/VSL_hd.mp4"
-                    poster="/assets/hero-bg.jpg"
                     containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
                     disablePause
                     onTimeUpdate={onMobileReveal ? handleMobileTimeUpdate : undefined}
@@ -400,7 +399,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               </button>
 
               {/* Trust badges below button */}
-              <div className="flex flex-row items-center justify-between mt-3.5 sm:mt-4 px-0.5 w-full max-w-[300px] mx-auto sm:mx-0" style={{ lineHeight: '1' /* Align elements strictly to line baseline limit */ }}>
+              <div className="flex flex-row items-center justify-between mt-3.5 sm:mt-4 px-0.5 w-full mx-auto sm:mx-0" style={{ lineHeight: '1' }}>
                 <div className="flex items-center gap-[3px]" style={STYLES.trustBadgeItem}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
@@ -448,7 +447,6 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
                 <VturbPlayer
                   src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/VSL_hd.mp4"
-                  poster="/assets/hero-bg.jpg"
                   containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
                   disablePause
                 />
