@@ -7,6 +7,7 @@ const PROGRESS_CURVE_EXPONENT = 0.35;
 
 interface PlayerProps {
   src: string;
+  poster?: string;
   onVideoEnded?: () => void;
   onTimeUpdate?: (time: number) => void;
   containerClassName?: string;
@@ -14,7 +15,7 @@ interface PlayerProps {
   disablePause?: boolean;
 }
 
-export function VturbPlayer({ src, onVideoEnded, onTimeUpdate, containerClassName, disablePause }: PlayerProps) {
+export function VturbPlayer({ src, poster, onVideoEnded, onTimeUpdate, containerClassName, disablePause }: PlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -134,6 +135,7 @@ export function VturbPlayer({ src, onVideoEnded, onTimeUpdate, containerClassNam
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
         className="w-full h-full object-cover cursor-pointer"
         autoPlay
         muted

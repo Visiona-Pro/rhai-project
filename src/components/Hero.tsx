@@ -320,6 +320,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
                 <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
                   <VturbPlayer
                     src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/VSL_hd.mp4"
+                    poster="/assets/hero-bg.jpg"
                     containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
                     disablePause
                     onTimeUpdate={onMobileReveal ? handleMobileTimeUpdate : undefined}
@@ -447,6 +448,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
                 <VturbPlayer
                   src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/VSL_hd.mp4"
+                  poster="/assets/hero-bg.jpg"
                   containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
                   disablePause
                 />

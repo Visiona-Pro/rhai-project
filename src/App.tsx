@@ -78,8 +78,7 @@ export default function App() {
         activeAngle={activeAngle}
       />
 
-      {/* Mobile: todo conteúdo abaixo do Hero fica oculto até o 10:15 do vídeo VSL */}
-      <div>
+      <main>
         <PainPoints />
 
         <Suspense fallback={<div aria-hidden="true" style={{minHeight:"100vh"}} />}>
@@ -103,7 +102,7 @@ export default function App() {
 
           <Footer />
         </Suspense>
-      </div>
+      </main>
     </div>
   );
 }

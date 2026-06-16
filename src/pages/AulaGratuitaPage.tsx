@@ -77,7 +77,7 @@ export default function AulaGratuitaPage() {
         mobileRevealed={mobileRevealed}
       />
 
-      <div className={mobileRevealed ? undefined : 'hidden md:block'}>
+      <main className={mobileRevealed ? undefined : 'hidden md:block'}>
         <PainPoints />
 
         <Suspense fallback={<div aria-hidden="true" style={{ minHeight: '100vh' }} />}>
@@ -101,7 +101,7 @@ export default function AulaGratuitaPage() {
 
           <Footer />
         </Suspense>
-      </div>
+      </main>
     </div>
   );
 }
