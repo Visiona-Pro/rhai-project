@@ -146,28 +146,6 @@ export function VturbPlayer({ src, poster, onVideoEnded, onTimeUpdate, container
         loop={!hasInteracted}
       />
 
-      {/* Overlay: estimula o primeiro clique para ativar o áudio */}
-      <AnimatePresence>
-        {!hasInteracted && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/40 flex items-start justify-center pt-6 sm:pt-10 cursor-pointer z-10"
-          >
-            <motion.div
-              animate={{ scale: [1, 1.04, 1] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              className="bg-[#c4a34f]/90 hover:bg-[#c4a34f] text-[#07070a] px-5 py-2.5 sm:px-8 sm:py-4 rounded-full flex items-center gap-3 font-semibold shadow-2xl text-sm sm:text-base border border-white/20 transition-colors"
-              onClick={handleInitialClick}
-            >
-              <VolumeX size={20} className="sm:w-6 sm:h-6" />
-              <span>Seu vídeo já começou. <br className="sm:hidden" />Clique para ouvir!</span>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Feedback central Play/Pause */}
       <AnimatePresence>
         {hasInteracted && !isPlaying && (
