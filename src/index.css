@@ -248,7 +248,7 @@ html {
   content: '';
   position: absolute;
   top: 0;
-  left: -50%;
+  left: 0;
   width: 35%;
   height: 100%;
   background: linear-gradient(
@@ -261,8 +261,8 @@ html {
 }
 
 @keyframes threadFlow {
-  0% { left: -50%; }
-  100% { left: 150%; }
+  0% { transform: translateX(-143%); }
+  100% { transform: translateX(429%); }
 }
 
 /* Pulsing luxurious background lights */
@@ -495,7 +495,7 @@ html {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
-  left: -150% !important;
+  left: 0 !important;
   width: 75% !important;
   height: 100% !important;
   background: linear-gradient(
@@ -504,7 +504,7 @@ html {
     rgba(255, 255, 255, 0.45) 50%,
     transparent 100%
   ) !important;
-  transform: skewX(-25deg) !important;
+  transform: skewX(-25deg) translateX(-200%) !important;
   animation: whiteSweepEffect 3.5s cubic-bezier(0.25, 1, 0.5, 1) infinite !important;
   pointer-events: none !important;
   z-index: 10 !important;
@@ -550,8 +550,8 @@ html {
 }
 
 @keyframes whiteSweepEffect {
-  0% { left: -150%; }
-  35%, 100% { left: 150%; }
+  0% { transform: skewX(-25deg) translateX(-200%); }
+  35%, 100% { transform: skewX(-25deg) translateX(200%); }
 }
 
 /* Override para bordas brancas solicitadas pelo usuário nos elementos selecionados */
