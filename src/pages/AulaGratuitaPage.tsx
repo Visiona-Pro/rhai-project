@@ -8,6 +8,7 @@ const About         = lazy(() => import('../components/About'));
 const CourseContent = lazy(() => import('../components/CourseContent'));
 const BeforeAfter   = lazy(() => import('../components/BeforeAfter'));
 const Testimonials  = lazy(() => import('../components/Testimonials'));
+const PrintsMarquee = lazy(() => import('../components/PrintsMarquee'));
 const OfferCheckout = lazy(() => import('../components/OfferCheckout'));
 const FAQ           = lazy(() => import('../components/FAQ'));
 const Footer        = lazy(() => import('../components/Footer'));
@@ -90,6 +91,8 @@ export default function AulaGratuitaPage() {
           <CourseContent />
 
           <Testimonials />
+
+          <PrintsMarquee />
 
           <div className="fio-de-luz" />
 

@@ -771,6 +771,25 @@ html {
   100% { transform: translateX(-50%); }
 }
 
+/* Prints marquee */
+.prints-marquee-container { overflow: hidden; position: relative; contain: layout paint; }
+.prints-marquee-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scrollMarquee 50s linear infinite;
+  will-change: transform;
+  contain: layout;
+}
+.prints-marquee-track--reverse {
+  animation: scrollMarqueeReverse 55s linear infinite;
+}
+.prints-marquee-container:hover .prints-marquee-track { animation-play-state: paused; }
+@keyframes scrollMarqueeReverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 /* ─── VÍDEO ASPECT RATIO ─────────────────────────────────── */
 .video-ratio-tiktok {
   position: relative;
