@@ -5,8 +5,9 @@ import App from './App.tsx';
 import { usePixelConsent, trackPageView } from './hooks/usePixelConsent.ts';
 import './index.css';
 
-const ObrigadoPage  = lazy(() => import('./pages/ObrigadoPage.tsx'));
+const ObrigadoPage    = lazy(() => import('./pages/ObrigadoPage.tsx'));
 const PrivacidadePage = lazy(() => import('./pages/PrivacidadePage.tsx'));
+const AulaGratuitaPage = lazy(() => import('./pages/AulaGratuitaPage.tsx'));
 
 function Root() {
   usePixelConsent();
@@ -25,6 +26,14 @@ function Root() {
     <>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route
+          path="/aulagratuita"
+          element={
+            <Suspense fallback={<div className="min-h-screen bg-black" />}>
+              <AulaGratuitaPage />
+            </Suspense>
+          }
+        />
         <Route
           path="/obrigado"
           element={
