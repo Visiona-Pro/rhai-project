@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import ObrigadoBenefitList from "./BenefitList";
 import { firePixelEvent } from "../../hooks/usePixelConsent";
-import offerImage from "../../assets/images/regenerated_image_1780716160590.png";
+import offerImage from "../../assets/images/regenerated_image_1780716160590.webp";
 import {
   CHECKOUT_URL,
   MEMBERS_URL,
