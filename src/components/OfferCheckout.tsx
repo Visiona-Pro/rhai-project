@@ -642,7 +642,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
             {/* Dynamic visual alignment: Title on Left, Description on Right */}
             <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-1.5 md:gap-4 text-left">
               <div className="w-full md:w-[32%] flex flex-col items-center md:items-start justify-center relative z-10">
-                <h4 
+                <h3
                   style={{
                     fontFamily: "'Playfair Display', serif",
                     fontWeight: 700,
@@ -655,7 +655,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                   className="uppercase text-center md:text-left relative z-10"
                 >
                   GARANTIA <br /> 7 DIAS
-                </h4>
+                </h3>
               </div>
 
               <p 

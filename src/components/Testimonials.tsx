@@ -59,9 +59,9 @@ const Testimonials = React.memo(function Testimonials() {
                   {item.initial}
                 </div>
                 <div>
-                  <h4 className="font-editorial-title text-[10px] text-white uppercase tracking-widest leading-none">
+                  <h3 className="font-editorial-title text-[10px] text-white uppercase tracking-widest leading-none">
                     {item.name}
-                  </h4>
+                  </h3>
                   <span className="text-[0.52rem] font-sans tracking-widest text-[#D4AF37] uppercase block mt-1">
                     ✓ {idxToAge(index)} • {idxToCity(index)}
                   </span>
