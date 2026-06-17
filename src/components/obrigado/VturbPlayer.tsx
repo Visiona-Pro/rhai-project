@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { firePixelEvent, fireClarity } from '../../hooks/usePixelConsent';
 
 // Curva psicológica: barra visual avança rápido no início, desacelera no fim
 const PROGRESS_CURVE_EXPONENT = 0.35;
@@ -27,13 +28,22 @@ export function VturbPlayer({ src, poster, onVideoEnded, onTimeUpdate, container
   const [duration, setDuration] = useState(0);
   const [maxWatchedTime, setMaxWatchedTime] = useState(0);
   const [isControlsVisible, setIsControlsVisible] = useState(false);
+  const milestonesFiredRef = useRef<Set<number>>(new Set());
 
   const getVisualProgress = (real: number) => Math.pow(real, PROGRESS_CURVE_EXPONENT);
   const getRealProgress = (visual: number) => Math.pow(visual, 1 / PROGRESS_CURVE_EXPONENT);
 
   useEffect(() => {
-    videoRef.current?.play().then(() => setIsPlaying(true)).catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+    video.play().then(() => setIsPlaying(true)).catch(() => {});
   }, []);
+
+  const handleCanPlay = () => {
+    const video = videoRef.current;
+    if (!video || isPlaying) return;
+    video.play().then(() => setIsPlaying(true)).catch(() => {});
+  };
 
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
@@ -41,6 +51,16 @@ export function VturbPlayer({ src, poster, onVideoEnded, onTimeUpdate, container
     setCurrentTime(t);
     if (hasInteracted && t > maxWatchedTime) setMaxWatchedTime(t);
     onTimeUpdate?.(t);
+    if (hasInteracted && duration > 0) {
+      const pct = (t / duration) * 100;
+      for (const milestone of [25, 50, 75] as const) {
+        if (pct >= milestone && !milestonesFiredRef.current.has(milestone)) {
+          milestonesFiredRef.current.add(milestone);
+          firePixelEvent(`VideoProgress${milestone}`, { milestone });
+          fireClarity('vsl', `${milestone}%`);
+        }
+      }
+    }
   };
 
   const handleInitialClick = (e: React.MouseEvent) => {
@@ -55,6 +75,9 @@ export function VturbPlayer({ src, poster, onVideoEnded, onTimeUpdate, container
         videoRef.current.volume = 1;
         videoRef.current.currentTime = 0;
         setMaxWatchedTime(0);
+        milestonesFiredRef.current.clear();
+        firePixelEvent('VideoPlay');
+        fireClarity('vsl', 'play');
         videoRef.current.play().catch(() => {
           // Se o browser bloquear o play com som, mantém mudo tocando
           if (videoRef.current) {
@@ -71,6 +94,8 @@ export function VturbPlayer({ src, poster, onVideoEnded, onTimeUpdate, container
 
   const handleEnded = () => {
     setIsPlaying(false);
+    firePixelEvent('VideoComplete');
+    fireClarity('vsl', 'complete');
     onVideoEnded?.();
   };
 
@@ -140,11 +165,30 @@ export function VturbPlayer({ src, poster, onVideoEnded, onTimeUpdate, container
         autoPlay
         muted
         playsInline
+        preload="auto"
+        onCanPlay={handleCanPlay}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={() => setDuration(videoRef.current?.duration || 0)}
         onEnded={handleEnded}
         loop={!hasInteracted}
       />
+
+      {/* Badge "ativar som" — some ao clicar */}
+      <AnimatePresence>
+        {!hasInteracted && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.4, delay: 0.8 }}
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 pointer-events-none flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white/90 rounded-full px-3 py-1.5"
+            style={{ fontSize: '11px', whiteSpace: 'nowrap', letterSpacing: '0.02em' }}
+          >
+            <VolumeX size={12} strokeWidth={2} />
+            <span>Toque para ativar o som</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Feedback central Play/Pause */}
       <AnimatePresence>

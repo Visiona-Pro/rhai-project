@@ -1,5 +1,11 @@
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    clarity?: (method: string, key: string, value?: string) => void;
+  }
+}
+
 export const PIXEL_ID = "2279783359459191";
 
 // fbpixel.js já cria o stub e carrega fbevents.js no <head>.
@@ -47,4 +53,11 @@ export function trackPageView() {
 export function firePixelEvent(event: string, data?: Record<string, unknown>) {
   fbq("init", PIXEL_ID);
   fbq("track", event, data ?? {});
+}
+
+// Envia propriedade customizada ao Microsoft Clarity (filtrável nas gravações)
+export function fireClarity(key: string, value: string) {
+  if (typeof window.clarity === "function") {
+    window.clarity("set", key, value);
+  }
 }
