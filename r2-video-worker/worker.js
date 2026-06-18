@@ -9,7 +9,7 @@ const ALLOWED_FILES = new Set(['VSL_web_v2.mp4', 'VSL_hd.mp4', 'UPSELL_web_v2.mp
 const ALLOWED_REFERER_HOSTS = (host) =>
   host === 'rhaiane.com.br' ||
   host.endsWith('.rhaiane.com.br') ||
-  host.endsWith('.vercel.app') || // previews da Vercel
+  host.endsWith('.rhai-project.vercel.app') || // previews da Vercel (apenas este projeto)
   host === 'localhost';
 
 export default {
