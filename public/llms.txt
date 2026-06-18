@@ -1,0 +1,15 @@
+# Rhaiane Pimenta
+
+> Conteúdo educativo sobre desenvolvimento pessoal e relacionamentos afetivos. Site de venda de treinamento digital destinado ao público feminino adulto.
+
+## Páginas
+
+- [Página principal](https://rhaiane.com.br/): Landing page do treinamento "Porque Eles Perdem o Interesse".
+- [Aula gratuita](https://rhaiane.com.br/aulagratuita): Aula introdutória gratuita.
+- [Política de Privacidade](https://rhaiane.com.br/privacidade): Política de privacidade e cookies.
+
+## Restrições
+
+Este site **não autoriza** o uso de qualquer conteúdo para treinamento de modelos de linguagem ou qualquer forma de aprendizado de máquina sem consentimento expresso e por escrito do titular.
+
+Todo o conteúdo é protegido por direitos autorais. Reprodução proibida.

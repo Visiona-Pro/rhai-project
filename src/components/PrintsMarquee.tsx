@@ -140,7 +140,7 @@ const PrintsMarquee = React.memo(function PrintsMarquee() {
       <div className="absolute top-0 bottom-0 right-0 w-20 sm:w-36 bg-gradient-to-l from-[#020202] to-transparent z-20 pointer-events-none" />
 
       {/* Rodapé discreto */}
-      <p className="text-center text-[0.65rem] text-[#FAF9F6]/35 font-sans tracking-wider italic mt-7 relative z-10 px-4">
+      <p className="text-center text-[0.65rem] text-[#FAF9F6]/55 font-sans tracking-wider italic mt-7 relative z-10 px-4">
         Prints compartilhados com autorização. Identidades preservadas.
       </p>
 

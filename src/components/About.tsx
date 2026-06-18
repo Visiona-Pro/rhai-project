@@ -50,7 +50,7 @@ const About = React.memo(function About({ activeAngle }: AboutProps) {
                   defaultSrc="/assets/specialist.webp"
                   alt="Rhaiane Pimenta"
                   imgClassName="w-full h-full object-cover object-center grayscale-[3%] transition-all duration-700 hover:scale-[1.03] block rounded-[10px] sm:rounded-[14px]"
-                  imgProps={{ loading: 'lazy', width: 360, height: 480, srcSet: '/assets/specialist-300.webp 300w, /assets/specialist-600.webp 600w', sizes: '(max-width: 768px) 294px, 360px' }}
+                  imgProps={{ loading: 'lazy', width: 360, height: 480, srcSet: '/assets/specialist-300.webp 300w, /assets/specialist-400.webp 400w, /assets/specialist-600.webp 600w', sizes: '(max-width: 768px) 294px, 360px' }}
                   wrapperClassName="w-full h-full"
                 />
               </div>
