@@ -399,7 +399,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               </button>
 
               {/* Trust badges below button */}
-              <div className="flex flex-row items-center justify-between mt-3.5 sm:mt-4 max-w-[380px] w-full" style={{ lineHeight: '1' }}>
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-3.5 sm:mt-4 w-full" style={{ lineHeight: '1' }}>
                 <div className="flex items-center gap-[3px]" style={STYLES.trustBadgeItem}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
