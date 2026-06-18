@@ -12,7 +12,7 @@ const Testimonials = React.memo(function Testimonials() {
         {/* Background radial soft light behind references */}
         <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[700px] h-[350px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="container relative z-10 px-6 sm:px-12 max-w-7xl mx-auto">
+        <div className="container-site z-10">
         
         {/* Header Title */}
         <div 

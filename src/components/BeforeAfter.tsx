@@ -16,7 +16,7 @@ const BeforeAfter = React.memo(function BeforeAfter() {
       <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent select-none pointer-events-none hidden lg:block" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-36 bg-[#D4AF37] blur-md opacity-40 hidden lg:block" />
 
-      <div className="container relative z-10 px-6 sm:px-12 max-w-7xl mx-auto">
+      <div className="container-site z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-4"> {/* ESPAÇO: mb-6 → mb-4 */}

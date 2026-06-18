@@ -114,7 +114,7 @@ export default function PainPoints() {
         </div>
 
         {/* Grid de cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full max-w-6xl mx-auto"> {/* CORRIGIDO: Substituídas dimensões rígidas de pixel (width: 1150px, height) por classes responsivas nativas para grids */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-6xl mx-auto"> {/* CORRIGIDO: Substituídas dimensões rígidas de pixel (width: 1150px, height) por classes responsivas nativas para grids */}
           {PAIN_CARDS.map((card) => (
             <div
               key={card.id}

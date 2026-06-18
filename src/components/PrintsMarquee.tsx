@@ -89,7 +89,7 @@ function PrintCard({ src, index, onOpen }: { src: string; index: number; onOpen:
   return (
     <div
       className="relative flex-shrink-0 rounded-[14px] overflow-hidden border border-[#D4AF37]/30 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:border-[#D4AF37]/70 transition-all duration-300 cursor-pointer bg-[#0a0a0a]"
-      style={{ width: '140px', height: '248px' }}
+      style={{ width: '210px', height: '372px' }}
       onClick={() => onOpen(index)}
     >
       <img

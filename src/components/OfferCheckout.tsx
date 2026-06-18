@@ -242,56 +242,93 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
 
   const memoizedImageStack = React.useMemo(() => {
     return (
-      <div className="relative w-full max-w-[280px] sm:max-w-[320px] h-[340px] sm:h-[380px] mx-auto mb-4 mt-2 select-none group">
-        
-        {/* Floor reflection & light spot element */}
-        <div className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-[220px] h-[25px] bg-[#D4AF37]/15 rounded-full blur-[18px] opacity-70 pointer-events-none" />
-        <div className="absolute bottom-[-22px] left-1/2 -translate-x-1/2 w-[160px] h-[10px] bg-black/80 rounded-full blur-[4px] pointer-events-none" />
+      <>
+        <div className="relative w-full max-w-[280px] sm:max-w-[320px] h-[340px] sm:h-[380px] mx-auto mt-2 select-none group">
 
-        {/* Primary Cover Image */}
-        <button
-          onClick={() => setIsSwapped(!isSwapped)}
-          type="button"
-          className={`absolute inset-0 rounded-none overflow-hidden border border-[#D4AF37]/35 shadow-2xl transition-all duration-500 cursor-pointer outline-none ${
-            isSwapped
-              ? 'z-10 translate-x-8 translate-y-6 scale-90 rotate-6 opacity-40 filter brightness-50'
-              : 'z-20 scale-100 rotate-0 opacity-100 filter brightness-100 shadow-[0_15px_35px_rgba(0,0,0,0.8)]'
-          }`}
-        >
-          <ImageUpload
-            storageKey="img_product_main"
-            defaultSrc="/assets/produto-principal.webp"
-            alt="Curso: Porque Eles Perdem o Interesse"
-            imgClassName="w-full h-full object-cover"
-            wrapperClassName="w-full h-full"
-            imgProps={{ loading: 'lazy', width: 280, height: 340 }}
-          />
-        </button>
+          {/* Floor reflection & light spot element */}
+          <div className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-[220px] h-[25px] bg-[#D4AF37]/15 rounded-full blur-[18px] opacity-70 pointer-events-none" />
+          <div className="absolute bottom-[-22px] left-1/2 -translate-x-1/2 w-[160px] h-[10px] bg-black/80 rounded-full blur-[4px] pointer-events-none" />
 
-        {/* Bonus Cover Image */}
-        <button
-          onClick={() => setIsSwapped(!isSwapped)}
-          type="button"
-          className={`absolute inset-0 rounded-none overflow-hidden border border-[#D4AF37]/35 shadow-2xl transition-all duration-500 cursor-pointer outline-none ${
-            isSwapped
-              ? 'z-20 scale-100 rotate-0 opacity-100 filter brightness-100 shadow-[0_15px_35px_rgba(0,0,0,0.8)]'
-              : 'z-10 translate-x-8 translate-y-6 scale-90 rotate-6 opacity-40 filter brightness-50'
-          }`}
-        >
-          <ImageUpload
-            storageKey="img_product_bonus"
-            defaultSrc="/assets/produto-bonus.webp"
-            alt="Bônus: O Gatilho que Vira o Jogo"
-            imgClassName="w-full h-full object-cover"
-            wrapperClassName="w-full h-full"
-            imgProps={{ loading: 'lazy', width: 280, height: 340 }}
-          />
-          <span className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-black/90 backdrop-blur-md text-[0.58rem] font-sans text-[#F3E5AB] tracking-[0.2em] uppercase border border-[#D4AF37]/30 font-bold rounded-none z-30">
-            CLIQUE PARA INVERTER COBERTURAS ✦
-          </span>
-        </button>
+          {/* Primary Cover Image */}
+          <button
+            onClick={() => setIsSwapped(!isSwapped)}
+            type="button"
+            className={`absolute inset-0 rounded-none overflow-hidden border border-[#D4AF37]/35 shadow-2xl transition-all duration-500 cursor-pointer outline-none ${
+              isSwapped
+                ? 'z-10 translate-x-8 translate-y-6 scale-90 rotate-6 opacity-40 filter brightness-50'
+                : 'z-20 scale-100 rotate-0 opacity-100 filter brightness-100 shadow-[0_15px_35px_rgba(0,0,0,0.8)]'
+            }`}
+          >
+            <ImageUpload
+              storageKey="img_product_main"
+              defaultSrc="/assets/produto-principal.webp"
+              alt="Curso: Porque Eles Perdem o Interesse"
+              imgClassName="w-full h-full object-cover"
+              wrapperClassName="w-full h-full"
+              imgProps={{ loading: 'lazy', width: 280, height: 340 }}
+            />
+          </button>
 
-      </div>
+          {/* Bonus Cover Image */}
+          <button
+            onClick={() => setIsSwapped(!isSwapped)}
+            type="button"
+            className={`absolute inset-0 rounded-none overflow-hidden border border-[#D4AF37]/35 shadow-2xl transition-all duration-500 cursor-pointer outline-none ${
+              isSwapped
+                ? 'z-20 scale-100 rotate-0 opacity-100 filter brightness-100 shadow-[0_15px_35px_rgba(0,0,0,0.8)]'
+                : 'z-10 translate-x-8 translate-y-6 scale-90 rotate-6 opacity-40 filter brightness-50'
+            }`}
+          >
+            <ImageUpload
+              storageKey="img_product_bonus"
+              defaultSrc="/assets/produto-bonus.webp"
+              alt="Bônus: O Gatilho que Vira o Jogo"
+              imgClassName="w-full h-full object-cover"
+              wrapperClassName="w-full h-full"
+              imgProps={{ loading: 'lazy', width: 280, height: 340 }}
+            />
+          </button>
+        </div>
+
+        {/* Indicador abaixo do stack — pontos reativos + micro texto clicável */}
+        <div className="flex flex-col items-center gap-1.5 mt-3 mb-3 select-none">
+          <div className="flex items-center gap-2">
+            <span
+              className="block rounded-full transition-all duration-400"
+              style={{
+                width: isSwapped ? '6px' : '8px',
+                height: '6px',
+                background: isSwapped ? 'rgba(212,175,55,0.28)' : '#D4AF37',
+              }}
+            />
+            <span
+              className="block rounded-full transition-all duration-400"
+              style={{
+                width: isSwapped ? '8px' : '6px',
+                height: '6px',
+                background: isSwapped ? '#D4AF37' : 'rgba(212,175,55,0.28)',
+              }}
+            />
+          </div>
+          <button
+            onClick={() => setIsSwapped(!isSwapped)}
+            type="button"
+            style={{
+              fontSize: '9px',
+              letterSpacing: '0.15em',
+              color: 'rgba(212,175,55,0.5)',
+              fontFamily: 'Inter, sans-serif',
+              textTransform: 'uppercase',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '2px 0',
+            }}
+          >
+            ⇄ alternar capa
+          </button>
+        </div>
+      </>
     );
   }, [isSwapped]);
 
@@ -432,21 +469,22 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
         </div>
 
         {/* Pricing panel with ultimate hierarchy */}
-        <div 
-          className="py-4 max-w-[680px] w-full mx-auto text-center flex flex-col gap-1 mb-4"
-          style={{ marginTop: '-37px', marginLeft: '0px' }}
+        <div
+          className="py-4 max-w-[600px] w-full mx-auto text-center flex flex-col gap-1 mb-4"
+          style={{ marginTop: '16px' }}
         >
           {/* PREÇO RISCADO */}
-          <div 
+          <div
             style={{
-              fontSize: '13px',
-              fontWeight: 400,
-              color: 'rgba(242,236,224,0.25)',
+              fontSize: '17px',
+              fontWeight: 500,
+              color: 'rgba(242,236,224,0.45)',
               textDecoration: 'line-through',
-              textAlign: 'center'
+              textAlign: 'center',
+              letterSpacing: '0.03em'
             }}
           >
-            De R$297
+            De R$2.869,00
           </div>
 
           <div className="flex flex-col items-center relative">
@@ -542,11 +580,11 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
     return (
       <>
         <div 
-          className="flex items-center justify-center flex-nowrap gap-x-2.5 sm:gap-x-4 mt-2 bg-transparent p-0 whitespace-nowrap"
+          className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 bg-transparent p-0"
           style={{ marginTop: '10px' }}
         >
           {/* Item 1 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
             </svg>
@@ -564,7 +602,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
           </div>
 
           {/* Item 2 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -583,7 +621,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
           </div>
 
           {/* Item 3 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               <polyline points="9 11 11 13 15 9" />
@@ -640,8 +678,8 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
             </div>
 
             {/* Dynamic visual alignment: Title on Left, Description on Right */}
-            <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-1.5 md:gap-4 text-left">
-              <div className="w-full md:w-[32%] flex flex-col items-center md:items-start justify-center relative z-10">
+            <div className="relative z-10 w-full flex flex-col md:flex-row items-center gap-3 md:gap-5 text-left">
+              <div className="shrink-0 flex flex-col items-center md:items-start justify-center relative z-10 border-b md:border-b-0 md:border-r border-[#D4AF37]/20 pb-2 md:pb-0 md:pr-5 w-full md:w-auto">
                 <h3
                   style={{
                     fontFamily: "'Playfair Display', serif",
@@ -652,13 +690,13 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                     lineHeight: '1.2',
                     display: 'block'
                   }}
-                  className="uppercase text-center md:text-left relative z-10"
+                  className="uppercase text-center md:text-left relative z-10 whitespace-nowrap"
                 >
-                  GARANTIA <br /> 7 DIAS
+                  GARANTIA 7 DIAS
                 </h3>
               </div>
 
-              <p 
+              <p
                 style={{
                   fontFamily: "var(--font-sans), 'Manrope', sans-serif",
                   fontStyle: 'italic',
@@ -667,7 +705,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                   color: '#f8eeb7',
                   opacity: 0.9
                 }}
-                className="font-light w-full md:w-[65%] text-justify relative z-10"
+                className="font-light flex-1 text-justify relative z-10"
               >
                 Você terá 7 dias de garantia para acessar e avaliar o conteúdo. Se, por QUALQUER MOTIVO, decidir que não era o que esperava, basta solicitar o reembolso e receberá 100% do seu dinheiro. Sem burocracia. O risco é meu, não seu!
               </p>
@@ -726,8 +764,8 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="relative overflow-hidden p-4 bg-[#D4AF37]/[0.01] border border-dashed border-[#D4AF37]/25 text-left max-w-[610px] mx-auto mb-4"
-              style={{ marginTop: '-31px', marginLeft: '0px' }}
+              className="relative overflow-hidden p-4 bg-[#D4AF37]/[0.01] border border-dashed border-[#D4AF37]/25 text-left max-w-[600px] mx-auto mb-4"
+              style={{ marginTop: '-31px' }}
             >
               <p 
                 className="font-sans text-[#f8eeb7] leading-relaxed font-light relative z-10 text-justify italic"
