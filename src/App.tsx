@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import CookieConsent from './components/CookieConsent';
 
 // Carregamento SÍNCRONO: Apenas o que está acima ou muito perto da dobra para otimizar o FCP/LCP inicial
 import Hero from './components/Hero';
@@ -72,6 +73,7 @@ export default function App() {
 
   return (
     <div className="relative bg-black min-h-screen text-[#FAF9F6] antialiased overflow-x-hidden">
+      <CookieConsent />
 
       {/* Hero: seções renderizadas imediatamente sem lag ou shift estrutural */}
       <Hero
