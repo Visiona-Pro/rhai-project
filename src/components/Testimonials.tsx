@@ -28,7 +28,7 @@ const Testimonials = React.memo(function Testimonials() {
             className="font-sans text-[#f8eeb7] font-light max-w-[56rem] w-full mx-auto"
             style={{ fontSize: '13px', lineHeight: '1.6' /* Custom subtitle text size and leading */ }}
           >
-            Relatos para inspirar, não para comparar.
+            Mulheres reais. Resultados reais.
           </p>
         </div>
 
@@ -71,6 +71,17 @@ const Testimonials = React.memo(function Testimonials() {
           ))}
         </div>
 
+      </div>
+
+      {/* Texto de ponte — identificação com as alunas */}
+      <div className="text-center mt-8 px-6 max-w-2xl mx-auto relative z-10">
+        <p className="font-sans text-[#F3E5AB] text-[0.9rem] sm:text-[1rem] leading-relaxed font-light italic">
+          Essas mulheres não tinham mais beleza, mais sorte ou mais valor do que você.{' '}
+          <strong className="font-medium not-italic" style={{ color: '#f2ece0' }}>
+            A diferença foi uma só: elas aprenderam o que nunca ninguém te ensinou.
+          </strong>{' '}
+          Hoje vivem o relacionamento que antes parecia impossível — e você pode viver também.
+        </p>
       </div>
 
       {/* Small notice below testimonials */}
