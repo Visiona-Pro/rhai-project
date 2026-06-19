@@ -3,11 +3,38 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 
+const criticalCSS = '*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#020202;color:#FAF9F6;font-family:Inter,Manrope,system-ui,sans-serif}#root{min-height:100vh}';
+
+const asyncCSSPlugin = {
+  name: 'async-css',
+  apply: 'build' as const,
+  enforce: 'post' as const,
+  transformIndexHtml(html: string) {
+    let result = html;
+
+    // Inject critical CSS inline
+    result = result.replace('</head>', `  <style>${criticalCSS}</style>\n</head>`);
+
+    // Convert Vite-injected stylesheet links to async preload pattern
+    result = result.replace(
+      /<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/g,
+      (_, href) =>
+        `<link rel="preload" as="style" crossorigin href="${href}">\n    <link rel="stylesheet" media="print" data-activate crossorigin href="${href}">\n    <noscript><link rel="stylesheet" href="${href}"></noscript>`,
+    );
+
+    // Inject css-activate.js before </body>
+    result = result.replace('</body>', `  <script defer src="/css-activate.js"></script>\n</body>`);
+
+    return result;
+  },
+};
+
 export default defineConfig(() => {
   return {
     plugins: [
       react(),
       tailwindcss(),
+      asyncCSSPlugin,
     ],
     resolve: {
       alias: {
