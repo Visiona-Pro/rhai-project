@@ -141,7 +141,7 @@ const PrintsMarquee = React.memo(function PrintsMarquee() {
 
       {/* Texto de ponte */}
       <div className="text-center mt-8 px-6 max-w-2xl mx-auto relative z-10">
-        <p className="font-sans text-[#F3E5AB] text-[0.9rem] sm:text-[1rem] leading-relaxed font-light italic">
+        <p className="font-sans text-[#F3E5AB] text-[13px] leading-relaxed font-light italic">
           Essas mulheres não tinham mais beleza, sorte ou mais valor que você.{' '}
           <strong className="font-medium not-italic" style={{ color: '#f2ece0' }}>
             A diferença foi uma só: elas aprenderam o que nunca ninguém te ensinou.
