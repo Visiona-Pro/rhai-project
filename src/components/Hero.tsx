@@ -181,7 +181,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
       h1a:      'Porque Eles Perdem',
       h1b:      'o Interesse',
       sub:      '… e como virar o jogo sem se humilhar. Assista e entenda:',
-      desc:     'No começo, ele mandava mensagem. Corria atrás. Investia. Depois esfriou do nada! Você não fez nada de errado. Só nunca te explicaram como a mente masculina funciona. Se você cansou de ser esquecida, ignorada ou quase assumida, essa é a sua <strong>chance de virar o jogo</strong>!',
+      desc:     'No começo, ele mandava mensagem. Corria atrás. Investia. Depois esfriou do nada! Você não fez nada de errado. Só nunca te explicaram como a mente masculina funciona. Se você cansou de ser esquecida, ignorada ou quase assumida, essa é a sua <strong style="font-weight:600;color:#f2ece0">chance de virar o jogo</strong>!',
       cta:      'Virar o Jogo Agora',
     },
     whatsapp: {
