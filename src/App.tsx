@@ -87,13 +87,9 @@ export default function App() {
         <Suspense fallback={<div aria-hidden="true" style={{minHeight:"100vh"}} />}>
           <FasesCerebro />
 
-          <About activeAngle={activeAngle} />
-
           <div className="fio-de-luz" />
 
           <CourseContent />
-
-          <Testimonials />
 
           <PrintsMarquee />
 
@@ -102,6 +98,8 @@ export default function App() {
           <BeforeAfter />
 
           <OfferCheckout activeAngle={activeAngle} secondsRemaining={secondsRemaining} />
+
+          <About activeAngle={activeAngle} />
 
           <FAQ />
 

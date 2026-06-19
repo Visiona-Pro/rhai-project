@@ -68,19 +68,19 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
     attention: {
       bonusTitle: '+ SUPERBÔNUS EXCLUSIVO: O GATILHO QUE VIRA O JOGO',
       description: 'Muito além de um simples treinamento offline. Este bônus exclusivo foi desenhado para ser um divisor de águas prático na sua vida afetiva. Ao entrar, você recebe acesso imediato ao material de posicionamento e, ao longo dos próximos dias, nossa plataforma liberará surpresas secretas em áudio e PDFs dinâmicos, que já ajudaram mais de 5.400 mulheres a restaurar relacionamentos quase frios. Prepare-se para ver a mágica do recuo ativo acontecer diante dos seus olhos.',
-      comparison: 'R$0,48 por dia, é menos do que um cafezinho! Menos do que você gasta tentando esquecer o alecrim que não te merece. Por menos de R$0,48/dia um conteúdo que pode evitar meses, ou anos, de dúvidas e desgaste emocional.',
+      comparison: 'R$0,48 por dia, é menos do que um cafezinho! Menos do que você gasta tentando esquecer o alecrim que não te merece.',
       ctaText: 'QUERO VIRAR O JOGO AGORA'
     },
     whatsapp: {
       bonusTitle: '+ SUPERBÔNUS EXCLUSIVO: O GATILHO QUE VIRA O JOGO',
       description: 'Este não é mais um compilado de dicas rasas de internet. Este material é uma verdadeira caixa-preta contendo roteiros prontos de diálogos, táticas de escrita magnética e ferramentas de postura íntima. Quem já seguiu essa metodologia relata um alívio absurdo na ansiedade e um retorno de interesse surpreendente do parceiro. Além de tudo isso, preparamos conteúdos surpresa ocultos que vão destravar a sua autoconfiança de uma forma que você nunca experimentou.',
-      comparison: 'R$0,48 por dia, é menos do que um cafezinho! Menos do que você gasta tentando esquecer o alecrim que não te merece. Por menos de R$0,48/dia um conteúdo que pode evitar meses, ou anos, de dúvidas e desgaste emocional.',
+      comparison: 'R$0,48 por dia, é menos do que um cafezinho! Menos do que você gasta tentando esquecer o alecrim que não te merece.',
       ctaText: 'QUERO VIRAR O JOGO AGORA'
     },
     unequal: {
       bonusTitle: '+ SUPERBÔNUS EXCLUSIVO: O GATILHO QUE VIRA O JOGO',
       description: 'Desenvolvido pela própria Rhaiane Pimenta com base das dores de milhares de suas seguidoras, esse bônus atua como um atalho de segurança máxima para os dias mais difíceis da relação. Você terá acesso aos materiais secretos que ela guardou apenas para suas mentoradas mais próximas. E mais: ao longo dos módulos, materiais de apoio em formato de áudio-pílulas surpresa serão liberados, consolidando a mudança de papel de quem corre atrás para quem é procurada com desejo.',
-      comparison: 'R$0,48 por dia, é menos do que um cafezinho! Menos do que você gasta tentando esquecer o alecrim que não te merece. Por menos de R$0,48/dia um conteúdo que pode evitar meses, ou anos, de dúvidas e desgaste emocional.',
+      comparison: 'R$0,48 por dia, é menos do que um cafezinho! Menos do que você gasta tentando esquecer o alecrim que não te merece.',
       ctaText: 'QUERO VIRAR O JOGO AGORA'
     }
   };
@@ -449,23 +449,6 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
             }}
           />
 
-          {/* LINHA DE ACESSO */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textAlign: 'center' }}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-            </svg>
-            <span 
-              style={{
-                fontSize: '11px',
-                fontWeight: '600',
-                color: '#c9933a',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase'
-              }}
-            >
-              Acesso imediato após a compra
-            </span>
-          </div>
         </div>
 
         {/* Pricing panel with ultimate hierarchy */}

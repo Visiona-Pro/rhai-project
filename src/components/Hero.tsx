@@ -181,8 +181,8 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
       h1a:      'Porque Eles Perdem',
       h1b:      'o Interesse',
       sub:      '… e como virar o jogo sem se humilhar. Assista e entenda:',
-      desc:     'No começo, ele mandava mensagem. Corria atrás. Investia. Depois esfriou do nada! Você não fez nada de errado. Só nunca te explicaram como a mente masculina funciona.',
-      cta:      'Ativar o Protocolo Agora',
+      desc:     'No começo, ele mandava mensagem. Corria atrás. Investia. Depois esfriou do nada! Você não fez nada de errado. Só nunca te explicaram como a mente masculina funciona. Se você cansou de ser esquecida, ignorada ou quase assumida, essa é a sua <strong>chance de virar o jogo</strong>!',
+      cta:      'Virar o Jogo Agora',
     },
     whatsapp: {
       badge:    'Psicologia Cognitiva Masculina · Exclusivo',
@@ -342,9 +342,8 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
                 transition={{ duration: 0.55, delay: 0.15 }}
                 className="hidden md:block font-sans text-[0.82rem] sm:text-[0.9rem] text-[#FAF9F6]/75 max-w-xl font-light whitespace-pre-line text-justify mb-1.5 sm:mb-2.5"
                 style={{ maxWidth: '400px', width: '100%', fontSize: '13px', lineHeight: '18px' }}
-              >
-                {c.desc}
-              </motion.p>
+                dangerouslySetInnerHTML={{ __html: c.desc }}
+              />
             </AnimatePresence>
 
             {/* Badge Protocolo 48h */}

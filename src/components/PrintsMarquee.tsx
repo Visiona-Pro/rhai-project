@@ -139,6 +139,17 @@ const PrintsMarquee = React.memo(function PrintsMarquee() {
       <div className="absolute top-0 bottom-0 left-0 w-20 sm:w-36 bg-gradient-to-r from-[#020202] to-transparent z-20 pointer-events-none" />
       <div className="absolute top-0 bottom-0 right-0 w-20 sm:w-36 bg-gradient-to-l from-[#020202] to-transparent z-20 pointer-events-none" />
 
+      {/* Texto de ponte */}
+      <div className="text-center mt-8 px-6 max-w-2xl mx-auto relative z-10">
+        <p className="font-sans text-[#F3E5AB] text-[0.9rem] sm:text-[1rem] leading-relaxed font-light italic">
+          Essas mulheres não tinham mais beleza, sorte ou mais valor que você.{' '}
+          <strong className="font-medium not-italic" style={{ color: '#f2ece0' }}>
+            A diferença foi uma só: elas aprenderam o que nunca ninguém te ensinou.
+          </strong>{' '}
+          E hoje vivem o relacionamento que antes parecia impossível.
+        </p>
+      </div>
+
       {/* Rodapé discreto */}
       <p className="text-center text-[0.65rem] text-[#FAF9F6]/55 font-sans tracking-wider italic mt-7 relative z-10 px-4">
         Prints compartilhados com autorização. Identidades preservadas.
