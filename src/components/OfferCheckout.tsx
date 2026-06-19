@@ -961,6 +961,21 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
               </div>
             </div>
 
+            {/* Texto de urgência pré-CTA */}
+            <div className="max-w-[540px] mx-auto mb-5 text-left flex flex-col gap-3" style={{ marginTop: '8px' }}>
+              <p className="font-sans text-[#FAF9F6]/80 text-[13px] leading-relaxed font-light">
+                Eu vou te dizer exatamente o que fazer pra esse homem não conseguir mais te tirar da cabeça.
+              </p>
+              <p className="font-sans text-[#FAF9F6]/80 text-[13px] leading-relaxed font-light">
+                Mas preciso te avisar: Essa página vai sair do ar. E quando sair, o preço promocional some junto.{' '}
+                <strong className="text-[#F3E5AB] font-medium">Não é gatilho. Não é marketing.</strong>
+              </p>
+              <p className="font-sans text-[#FAF9F6]/80 text-[13px] leading-relaxed font-light">
+                Você pode fechar essa aba agora e continuar esperando ele te dar valor. Ou pode tomar{' '}
+                <strong className="text-[#F3E5AB] font-medium">a única decisão que vai mudar absolutamente tudo.</strong>
+              </p>
+            </div>
+
             <AnimatePresence mode="wait">
               <motion.a
                 key={activeAngle}
