@@ -181,7 +181,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
       h1a:      'Porque Eles Perdem',
       h1b:      'o Interesse',
       sub:      '… e como virar o jogo sem se humilhar. Assista e entenda:',
-      desc:     'No começo, ele mandava mensagem. Corria atrás. Investia. Depois esfriou do nada! Você não fez nada de errado. Só nunca te explicaram como a mente masculina funciona. Se você cansou de ser esquecida, ignorada ou quase assumida, essa é a sua <strong style="font-weight:600;color:#f2ece0">chance de virar o jogo</strong>!',
+      desc:     'Ele mandava mensagem, corria atrás, investia... Depois esfriou. Você não fez nada de errado. Só nunca te mostraram como a mente masculina realmente funciona. Se você cansou de ser esquecida, ignorada ou quase assumida, essa é a sua <strong style="font-weight:600;color:#f2ece0">chance de virar o jogo</strong>!',
       cta:      'Virar o Jogo Agora',
     },
     whatsapp: {
@@ -346,6 +346,13 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               />
             </AnimatePresence>
 
+            {/* Frase de transição */}
+            <p
+              className="hidden md:block font-sans text-[0.85rem] text-[#F3E5AB] font-medium max-w-[380px] leading-snug"
+            >
+              Domine a mente masculina e faça ele correr atrás sem abrir mão de quem você é.
+            </p>
+
             {/* Badge Protocolo 48h */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -372,7 +379,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               <p
                 style={STYLES.heroBadgeText}
               >
-                Sem se humilhar ou implorar. A estratégia que ensina como <strong style={{ color: '#f2ece0', fontWeight: 500 }}>despertar o interesse dele (novamente)</strong> em <strong style={{ color: '#f2ece0', fontWeight: 500 }}>menos de 48h</strong>.
+                O segredo que faz ele correr atrás. Sem se humilhar ou implorar. Descubra como fazer <strong style={{ color: '#f2ece0', fontWeight: 500 }}>qualquer homem te priorizar, te assumir</strong> e <strong style={{ color: '#f2ece0', fontWeight: 500 }}>nunca mais te ignorar</strong>.
               </p>
             </motion.div>
 
