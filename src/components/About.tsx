@@ -62,7 +62,7 @@ const About = React.memo(function About({ activeAngle }: AboutProps) {
             {[
               'A mulher que aceitava pouco enquanto entregava tudo. A boazinha, que suportava tudo e ainda não era suficiente. Que confundia intensidade com amor. Até perceber que o problema não era "amar demais", era aceitar de menos.',
               'Foi na dor das insônias e da sensação constante de não me sentir prioridade que comecei a enxergar os padrões por trás dos relacionamentos.',
-              'Hoje, eu não te entrego apenas conselhos genéricos ou meia dúzia de palavras pra te confortar. Te entrego o mapa cirúrgico que já resgatou várias mulheres e me tirou do fundo do poço. É hora de recuperar o seu valor!',
+              'Hoje, eu não te entrego apenas conselhos genéricos ou meia dúzia de palavras pra te confortar. Te entrego o que me tirou do fundo do poço e já resgatou muitas mulheres. Com o que eu vou te ensinar, você vai sair de receber migalhas pra ter um relacionamento sério e de verdade. Não porque você vai correr atrás. Mas porque ele vai entender, sozinho, que perder você não é uma opção.',
             ].map((text, i) => (
               <p
                 key={i}
