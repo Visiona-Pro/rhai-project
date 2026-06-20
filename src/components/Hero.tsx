@@ -329,6 +329,17 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               </div>
             </div>
 
+            {/* Texto descritivo — apenas mobile, abaixo da VSL */}
+            <div className="block md:hidden mt-4 px-1">
+              <p
+                className="font-sans text-[13px] text-[#FAF9F6]/75 font-light leading-[18px] text-justify mb-3"
+                dangerouslySetInnerHTML={{ __html: c.desc }}
+              />
+              <p className="font-sans text-[0.85rem] text-[#F3E5AB] font-medium leading-snug">
+                Domine a mente masculina e faça ele correr atrás sem abrir mão de quem você é.
+              </p>
+            </div>
+
             {/* Badge + CTA */}
             <div className={mobileRevealed === false ? 'hidden md:contents' : 'contents'}>
 
