@@ -17,7 +17,7 @@ export default function AulaGratuitaPage() {
   const activeAngle: CopyAngle = 'attention';
 
   const [secondsRemaining, setSecondsRemaining] = React.useState<number>(() => {
-    const targetHours = 9.7;
+    const targetHours = 0.3; // 18 minutos
     const defaultDurationMs = Math.round(targetHours * 60 * 60 * 1000);
 
     if (typeof window !== 'undefined') {
@@ -37,7 +37,7 @@ export default function AulaGratuitaPage() {
         return Math.floor(defaultDurationMs / 1000);
       }
     }
-    return 34914;
+    return 1080;
   });
 
   React.useEffect(() => {

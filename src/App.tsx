@@ -24,7 +24,7 @@ export default function App() {
   // Otimização de Performance: Salvar o Timestamp de Expiração em vez de fazer I/O síncrono no disco (localStorage.setItem) a cada 1 segundo.
   // Evita lentidão crítica nas transições e na CPU de aparelhos celulares.
   const [secondsRemaining, setSecondsRemaining] = React.useState<number>(() => {
-    const targetHours = 9.7; // Equivalente a ~34914 segundos
+    const targetHours = 0.3; // 18 minutos
     const defaultDurationMs = Math.round(targetHours * 60 * 60 * 1000);
     
     if (typeof window !== 'undefined') {
@@ -45,7 +45,7 @@ export default function App() {
         return Math.floor(defaultDurationMs / 1000);
       }
     }
-    return 34914;
+    return 1080;
   });
 
   React.useEffect(() => {
