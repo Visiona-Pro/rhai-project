@@ -359,88 +359,30 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
             ✦ O QUE VOCÊ LEVA ✦
           </span>
 
-          {/* GRID DE ITENS */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-[8px]">
-            {/* Item 1 */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <div className="chase-indicator-1" style={{ width: '13px', height: '13px', border: '1.5px solid #e5c158', background: 'rgba(229, 193, 88, 0.25)', boxShadow: '0 0 10px rgba(229, 193, 88, 0.75)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+          {/* LISTA DE ITENS */}
+          {[
+            { label: 'Método Completo em VideoAula', value: 'R$1.199', indicator: 'chase-indicator-1' },
+            { label: 'Materiais Complementares',     value: 'R$550',   indicator: 'chase-indicator-2' },
+            { label: 'Reflexões Guiadas',            value: 'R$297',   indicator: 'chase-indicator-3' },
+            { label: '2 Ebooks de Apoio',            value: 'R$92',    indicator: 'chase-indicator-4' },
+            { label: 'AULÃO SUPERBÔNUS',             value: 'R$497',   indicator: 'chase-indicator-5' },
+            { label: 'Material Complementar do AULÃO', value: 'R$234', indicator: 'chase-indicator-6' },
+          ].map((item) => (
+            <div key={item.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', paddingBottom: '6px', borderBottom: '1px solid rgba(201,147,58,0.07)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div className={item.indicator} style={{ width: '13px', height: '13px', border: '1.5px solid #e5c158', background: 'rgba(229,193,88,0.25)', boxShadow: '0 0 10px rgba(229,193,88,0.75)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <strong style={{ color: 'rgba(242,236,224,0.85)', fontWeight: '500', fontSize: '12.5px' }}>{item.label}</strong>
               </div>
-              <div style={{ fontSize: '11.5px', fontWeight: '300', color: 'rgba(242,236,224,0.55)', lineHeight: '1.3' }}>
-                <strong style={{ color: 'rgba(242,236,224,0.85)', fontWeight: '500', display: 'block', fontSize: '13px' }}>12 videoaulas</strong>
-                divididas em 2 módulos
-              </div>
+              <span style={{ fontSize: '11px', color: 'rgba(242,236,224,0.35)', textDecoration: 'line-through', whiteSpace: 'nowrap', flexShrink: 0 }}>{item.value}</span>
             </div>
-
-            {/* Item 2 */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <div className="chase-indicator-2" style={{ width: '13px', height: '13px', border: '1.5px solid #e5c158', background: 'rgba(229, 193, 88, 0.25)', boxShadow: '0 0 10px rgba(229, 193, 88, 0.75)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <div style={{ fontSize: '11.5px', fontWeight: '300', color: 'rgba(242,236,224,0.55)', lineHeight: '1.3' }}>
-                <strong style={{ color: 'rgba(242,236,224,0.85)', fontWeight: '500', display: 'block', fontSize: '13px' }}>2 eBooks</strong>
-                de apoio e aprofundamento
-              </div>
-            </div>
-
-            {/* Item 3 */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <div className="chase-indicator-3" style={{ width: '13px', height: '13px', border: '1.5px solid #e5c158', background: 'rgba(229, 193, 88, 0.25)', boxShadow: '0 0 10px rgba(229, 193, 88, 0.75)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <div style={{ fontSize: '11.5px', fontWeight: '300', color: 'rgba(242,236,224,0.55)', lineHeight: '1.3', fontStyle: 'normal' }}>
-                <strong style={{ color: 'rgba(242,236,224,0.85)', fontWeight: '500', display: 'block', fontSize: '13px' }}>Materiais</strong>
-                complementares exclusivos
-              </div>
-            </div>
-
-            {/* Item 4 */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <div className="chase-indicator-4" style={{ width: '13px', height: '13px', border: '1.5px solid #e5c158', background: 'rgba(229, 193, 88, 0.25)', boxShadow: '0 0 10px rgba(229, 193, 88, 0.75)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <div style={{ fontSize: '11.5px', fontWeight: '300', color: 'rgba(242,236,224,0.55)', lineHeight: '1.3' }}>
-                <strong style={{ color: 'rgba(242,236,224,0.85)', fontWeight: '500', display: 'block', fontSize: '13px' }}>Exercícios</strong>
-                estratégicos e reflexões guiadas
-              </div>
-            </div>
-
-            {/* Item 5 */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <div className="chase-indicator-5" style={{ width: '13px', height: '13px', border: '1.5px solid #e5c158', background: 'rgba(229, 193, 88, 0.25)', boxShadow: '0 0 10px rgba(229, 193, 88, 0.75)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <div style={{ fontSize: '11.5px', fontWeight: '300', color: 'rgba(242,236,224,0.55)', lineHeight: '1.3' }}>
-                <strong style={{ color: 'rgba(242,236,224,0.85)', fontWeight: '500', display: 'block', fontSize: '13px' }}>Conteúdos surpresa</strong>
-                liberados junto ao treinamento
-              </div>
-            </div>
-
-            {/* Item 6 */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <div className="chase-indicator-6" style={{ width: '13px', height: '13px', border: '1.5px solid #e5c158', background: 'rgba(229, 193, 88, 0.25)', boxShadow: '0 0 10px rgba(229, 193, 88, 0.75)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <div style={{ fontSize: '11.5px', fontWeight: '300', color: 'rgba(242,236,224,0.55)', lineHeight: '1.3' }}>
-                <strong style={{ color: 'rgba(242,236,224,0.85)', fontWeight: '700', display: 'block', fontSize: '13px' }}>★ AULÃO SUPER BÔNUS</strong>
-              </div>
-            </div>
-          </div>
+          ))}
 
           {/* DIVISOR */}
-          <div 
+          <div
             style={{
               width: '100%',
               height: '1px',
@@ -474,10 +416,8 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
             {/* Subtle white glow background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-24 bg-white/[0.06] blur-2xl rounded-full pointer-events-none select-none" />
 
-
-
             {/* LINHA DO PARCELAMENTO (destaque principal) */}
-            <div 
+            <div
               style={{
                 display: 'flex',
                 alignItems: 'baseline',
@@ -488,7 +428,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
               }}
             >
               {/* PREFIX "12x de" */}
-              <span 
+              <span
                 style={{
                   fontSize: '14px',
                   fontWeight: 300,
@@ -500,7 +440,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
               </span>
 
               {/* VALOR PRINCIPAL */}
-              <span 
+              <span
                 style={{
                   fontFamily: "'Playfair Display', serif",
                   fontSize: '108px',
@@ -510,8 +450,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                   fontVariantNumeric: 'tabular-nums'
                 }}
               >
-                {/* "R$" antes do número */}
-                <span 
+                <span
                   style={{
                     fontSize: '28px',
                     fontWeight: 400,
@@ -522,8 +461,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                   R$
                 </span>
                 15
-                {/* ",30" após o número */}
-                <span 
+                <span
                   style={{
                     fontSize: '42px',
                     fontWeight: 400,
@@ -537,7 +475,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
             </div>
 
             {/* LABEL ABAIXO DO VALOR */}
-            <span 
+            <span
               style={{
                 fontSize: '11px',
                 fontWeight: 400,
@@ -748,7 +686,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
               className="relative overflow-hidden p-4 bg-[#D4AF37]/[0.01] border border-dashed border-[#D4AF37]/25 text-left max-w-[600px] mx-auto mb-4"
-              style={{ marginTop: '-31px' }}
+              style={{ marginTop: '8px' }}
             >
               <p 
                 className="font-sans text-[#f8eeb7] leading-relaxed font-light relative z-10 text-justify italic"
