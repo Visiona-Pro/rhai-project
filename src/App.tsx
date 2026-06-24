@@ -9,6 +9,7 @@ import PainPoints from './components/PainPoints';
 const FasesCerebro  = lazy(() => import('./components/FasesCerebro'));
 const About         = lazy(() => import('./components/About'));
 const CourseContent = lazy(() => import('./components/CourseContent'));
+const CienciaExplica = lazy(() => import('./components/CienciaExplica'));
 const BeforeAfter   = lazy(() => import('./components/BeforeAfter'));
 const Testimonials  = lazy(() => import('./components/Testimonials'));
 const PrintsMarquee = lazy(() => import('./components/PrintsMarquee'));
@@ -87,11 +88,30 @@ export default function App() {
         <Suspense fallback={<div aria-hidden="true" style={{minHeight:"100vh"}} />}>
           <FasesCerebro />
 
+          {/* Faixa de destaque pós-fases */}
+          <div className="relative py-8 sm:py-10 bg-[#060504] border-y border-[#D4AF37]/25 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/6 to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="container-site text-center relative z-10 px-6">
+              <div className="w-8 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-4" />
+              <p className="font-editorial-title uppercase tracking-widest leading-snug text-[18px] sm:text-[22px] md:text-[26px]">
+                <span className="text-[#F5F1E8]">Sem joguinhos, sem manipulação. </span>
+                <span className="title-gold-gradient">Você continua sendo você, só que irresistível!</span>
+              </p>
+              <div className="w-8 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-4" />
+            </div>
+          </div>
+
           <div className="fio-de-luz" />
 
           <CourseContent />
 
           <PrintsMarquee />
+
+          <div className="fio-de-luz" />
+
+          <CienciaExplica />
 
           <div className="fio-de-luz" />
 

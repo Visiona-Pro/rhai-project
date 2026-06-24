@@ -85,7 +85,7 @@ export default function CourseContent() {
         {/* Acordeão */}
         <div className="space-y-2">
           {COURSE_BLOCKS.map((block, blockIdx) => {
-            const isBonus = block.id === 'block-3';
+            const isBonus = !!block.isBonus;
             const numLabel = `0${blockIdx + 1}`;
             
             return (
