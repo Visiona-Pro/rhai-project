@@ -53,6 +53,35 @@ export default function CienciaExplica() {
 
             <div className="space-y-5 relative z-10">
 
+              {/* Imagem Harvard */}
+              <div className="overflow-hidden rounded-xl border border-[#D4AF37]/15">
+                <img
+                  src="/assets/harvard-research.jpeg"
+                  alt="Pesquisa Harvard Medical School — O amor e o cérebro"
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+              </div>
+              <p className="text-[11px] font-bold text-[#908b82] text-center -mt-1">
+                Estudo: "O Amor e o Cérebro" — Harvard Medical School
+              </p>
+
+              {/* Citação histórica */}
+              <p className="font-editorial-title text-[16px] sm:text-[19px] uppercase tracking-wider text-[#F3E5AB] leading-snug text-center">
+                Cleópatra e Marilyn Monroe dominavam os princípios de atração emocional.
+                Não era só beleza, era o poder de fazer qualquer homem ficar de joelhos diante delas.
+              </p>
+
+              {/* Imagem Cleópatra & Marilyn */}
+              <div className="overflow-hidden rounded-xl border border-[#D4AF37]/15">
+                <img
+                  src="/assets/cleopatra-marilyn.jpeg"
+                  alt="Cleópatra e Marilyn Monroe — poder de atração emocional"
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+              </div>
+
               {/* Destaque Harvard */}
               <div className="border-l-2 border-[#D4AF37] pl-4 sm:pl-6">
                 <p className="font-sans text-[13px] sm:text-[14px] text-[#F5F1E8] leading-[1.8] font-light">
