@@ -22,6 +22,7 @@ export default function CookieConsent() {
     <div
       role="dialog"
       aria-label="Aviso de cookies"
+      className="hidden md:flex"
       style={{
         position: 'fixed',
         bottom: 0,

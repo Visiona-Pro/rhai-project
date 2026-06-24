@@ -114,7 +114,7 @@ export default function CourseContent() {
                     </div>
  
                     <div className="space-y-0.5">
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                         {block.title && (
                           <span className="font-sans text-[0.58rem] sm:text-[0.62rem] tracking-[0.24em] text-[#D4AF37] uppercase font-bold block">
                             {block.title}
