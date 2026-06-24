@@ -127,7 +127,7 @@ export default function CourseContent() {
                         )}
                       </div>
                       {block.subtitle && (
-                        <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '16px' /* Custom content block title font size */ }}>
+                        <h3 className={`font-editorial-title text-white uppercase tracking-wider leading-snug${isBonus ? ' mt-2' : ''}`} style={{ fontSize: '16px' }}>
                           {block.subtitle}
                         </h3>
                       )}
