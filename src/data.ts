@@ -4,23 +4,51 @@ export const PAIN_CARDS: PainCard[] = [
   {
     id: 'pain-1',
     icon: '01',
-    title: 'Você faz de tudo. E ele não percebe.',
-    description: 'Você responde na hora. Muda seus planos. Está sempre disponível. Aceita migalhas. O que você não percebe é que disponibilidade sem valor não gera desejo. Gera acomodação.',
-    highlight: 'Dosagem programada de atenção'
+    title: 'Ele parecia interessado, mas foi se afastando sem explicação.',
+    description: 'No início era perfeito, mas depois foi ficando frio e distante.',
+    highlight: 'Afastamento sem explicação'
   },
   {
     id: 'pain-2',
     icon: '02',
-    title: 'A relação não anda. Mas você também não vai embora.',
-    description: 'Os meses passam. Tem intimidade, momentos bons. Mas toda vez que você tenta clareza, compromisso ou posicionamento, ele recua. E você começa a aceitar cada vez menos.',
-    highlight: 'Responsabilidades de solteiro com luxos de casal'
+    title: 'Disse que "não estava pronto e não era hora", mas assumiu outra.',
+    description: 'A desculpa que machuca: não estava pronto pra você, mas pra ela estava.',
+    highlight: 'A desculpa que não era desculpa'
   },
   {
     id: 'pain-3',
     icon: '03',
-    title: 'Você só pensa nele. E ele nem lembra que você existe.',
-    description: 'Você passa horas tentando entende-lo. Relê mensagens. Analisa tudo... Enquanto isso, ele oferece o mínimo e ainda ocupa espaço demais na sua mente.',
-    highlight: 'Desgaste e ansiedade crônica'
+    title: 'Você se sente inferior, não se sente suficiente pra ele.',
+    description: 'Por mais que se esforce, parece que nunca é interessante o suficiente pra ele.',
+    highlight: 'Nunca suficiente'
+  },
+  {
+    id: 'pain-4',
+    icon: '04',
+    title: 'Diz que te ama, mas vive te traindo.',
+    description: 'Você vive tentando acreditar na pessoa que ele diz que é, mas vive se decepcionando com as atitudes dele.',
+    highlight: 'Amor que decepciona'
+  },
+  {
+    id: 'pain-5',
+    icon: '05',
+    title: 'Vive se perguntando: "O que ela tem que eu não tenho?"',
+    description: 'Vê outras mulheres sendo escolhidas enquanto você continua nesse vai não vai.',
+    highlight: 'Comparação constante'
+  },
+  {
+    id: 'pain-6',
+    icon: '06',
+    title: 'Se sentiu usada depois de dormir com ele.',
+    description: 'Achou que ia aproximar vocês, mas ele só se afastou mais.',
+    highlight: 'Intimidade que afasta'
+  },
+  {
+    id: 'pain-7',
+    icon: '07',
+    title: 'Está cansada. Cansada de verdade.',
+    description: 'Cansada de apostar, de esperar, de acreditar e sempre quebrar a cara. Você não quer muito. Só quer se sentir amada.',
+    highlight: 'Cansaço de verdade'
   }
 ];
 
@@ -30,7 +58,7 @@ export const MALE_BRAIN_PHASES: Phase[] = [
     num: '01',
     phaseName: 'Alívio & Autossuficiência',
     title: 'A Falsa Sensação de Controle',
-    description: 'Existe uma razão específica para isso e quando você entende, para de interpretar o comportamento dele da forma errada.',
+    description: 'Sabe aquela mulher que ele simplesmente não consegue tirar da cabeça? Eu vou te mostrar exatamente o que é isso.',
     mindset: 'Ele tem 100% de certeza da posse',
     impact: 'Espaço temporário de segurança'
   },
@@ -39,7 +67,7 @@ export const MALE_BRAIN_PHASES: Phase[] = [
     num: '02',
     phaseName: 'Curiosidade Instintiva',
     title: 'A Quebra da Previsibilidade',
-    description: 'Ele está te observando sem te avisar. E o que você faz nesse momento define o quanto ele vai te valorizar depois.',
+    description: 'Passamos horas tentando entender o que ele pensa. Quando você entende como a mente dele funciona, você para de tentar adivinhar e começa a agir com inteligência.',
     mindset: 'Gatilho inconsciente da dúvida competitiva',
     impact: 'Estímulo cerebral de caça reativado'
   },
@@ -48,7 +76,7 @@ export const MALE_BRAIN_PHASES: Phase[] = [
     num: '03',
     phaseName: 'Ego Ferido',
     title: 'A Perda do Suprimento de Atenção',
-    description: 'Não é coincidência. Existe um mecanismo por trás disso e entender ele muda a forma como você age.',
+    description: 'Ele não vai parar de pensar em você. Não porque você correu atrás. Mas porque você vai saber como deixar uma marca que nenhuma outra deixou.',
     mindset: 'Sensação real de desvalorização dele',
     impact: 'Despertar imediato do arrependimento'
   },
@@ -57,7 +85,7 @@ export const MALE_BRAIN_PHASES: Phase[] = [
     num: '04',
     phaseName: 'Reavaliação de Urgência',
     title: 'A Procura Ativa e Repentina',
-    description: 'Tudo que aconteceu antes desemboca nessa fase. Quem entende esse momento sabe exatamente como se posicionar.',
+    description: 'Ele vai te olhar e pensar: não consigo imaginar minha vida sem ela.',
     mindset: 'Ele corre atrás buscando reaver o valor que perdeu',
     impact: 'Interesse restabelecido em menos de 48h'
   }
@@ -67,31 +95,63 @@ export const COURSE_BLOCKS: CourseBlock[] = [
   {
     id: 'block-1',
     title: 'BLOCO I',
-    subtitle: 'O ERRO QUE TE FAZ OPÇÃO E O PROTOCOLO 48H',
+    subtitle: 'POR QUE ELE SUMIU E O QUE FAZER NAS PRÓXIMAS HORAS',
     items: [
-      'Entenda por que ele muda;',
-      'Reconheça os sinais de um homem de valor e de um cafajeste;',
-      'O erro que parece amor: descubra o que está te sabotando;',
-      'Recupere seu controle emocional quando ele muda e saiba como agir.'
+      'Sabe aquela sensação de não saber se age ou espera? Aqui acaba.',
+      'Você vai entender por que ele se afastou.',
+      'Saber exatamente o que fazer nas próximas horas que ainda podem mudar tudo.'
     ]
   },
   {
     id: 'block-2',
     title: 'BLOCO II',
-    subtitle: 'O MANUAL DA MULHER QUE NÃO CORRE ATRÁS',
+    subtitle: 'A MENTE DELE REVELADA',
     items: [
-      'O verdadeiro significado dos sumiços masculinos e por que alguns homens voltam.',
-      'Como interpretar o silêncio masculino;',
-      'Como agir depois de um date;',
-      'Por que algumas mulheres viram prioridade e outras são as eternas "ficantes".'
+      'Você nunca mais vai ficar acordada tentando decifrar os comportamentos dele.',
+      'Você finalmente vai entender o que acontece dentro da cabeça dele.',
+      'E por que nada do que você fez até hoje funcionou.'
     ]
   },
   {
     id: 'block-3',
-    title: '',
-    subtitle: '',
+    title: 'BLOCO III',
+    subtitle: 'O PROTOCOLO 48H',
     items: [
-      'O GATILHO QUE VIRA O JOGO: O que acontece na mente dele quando você muda o jogo, e ele não consegue te ignorar.'
+      'Em 48h ele vai te enxergar diferente!',
+      'Você vai saber exatamente o que fazer e o que parar de fazer.',
+      'Cada passo errado agora custa caro, e você não pode mais errar.'
+    ]
+  },
+  {
+    id: 'block-4',
+    title: 'BLOCO IV',
+    subtitle: 'DE INVISÍVEL A INESQUECÍVEL',
+    items: [
+      'Tem mulher que o homem não consegue tirar da cabeça. Pensa nela o dia inteiro.',
+      'Não é beleza, não é sorte.',
+      'Aqui você descobre o que é e se torna essa mulher pra ele.'
+    ]
+  },
+  {
+    id: 'block-bonus-1',
+    title: 'BÔNUS',
+    subtitle: 'O GATILHO QUE VIRA O JOGO',
+    isBonus: true,
+    items: [
+      'Existe um movimento que faz ele acordar pra o que está prestes a perder.',
+      'Esse é o gatilho que aciona o instinto dele de valorizar e escolher.',
+      'E que a maioria das mulheres nunca soube que existia.'
+    ]
+  },
+  {
+    id: 'block-bonus-2',
+    title: 'BÔNUS',
+    subtitle: 'AS 4 FASES DA RECONQUISTA',
+    isBonus: true,
+    items: [
+      'Entenda como se posicionar em cada etapa, sem correr atrás, sem implorar e sem se humilhar.',
+      'Quando você entende o que está acontecendo na mente dele, você para de agir no desespero.',
+      'E passa a dominar a situação.'
     ]
   }
 ];

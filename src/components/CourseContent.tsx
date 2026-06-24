@@ -85,7 +85,7 @@ export default function CourseContent() {
         {/* Acordeão */}
         <div className="space-y-2">
           {COURSE_BLOCKS.map((block, blockIdx) => {
-            const isBonus = block.id === 'block-3';
+            const isBonus = !!block.isBonus;
             const numLabel = `0${blockIdx + 1}`;
             
             return (
@@ -114,7 +114,7 @@ export default function CourseContent() {
                     </div>
  
                     <div className="space-y-0.5">
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                         {block.title && (
                           <span className="font-sans text-[0.58rem] sm:text-[0.62rem] tracking-[0.24em] text-[#D4AF37] uppercase font-bold block">
                             {block.title}
@@ -127,7 +127,7 @@ export default function CourseContent() {
                         )}
                       </div>
                       {block.subtitle && (
-                        <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '16px' /* Custom content block title font size */ }}>
+                        <h3 className={`font-editorial-title text-white uppercase tracking-wider leading-snug${isBonus ? ' mt-2' : ''}`} style={{ fontSize: '16px' }}>
                           {block.subtitle}
                         </h3>
                       )}

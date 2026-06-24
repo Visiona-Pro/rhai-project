@@ -460,7 +460,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                 >
                   R$
                 </span>
-                15
+                10
                 <span
                   style={{
                     fontSize: '42px',
@@ -469,7 +469,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                     color: '#f2ece0'
                   }}
                 >
-                  ,30
+                  ,03
                 </span>
               </span>
             </div>
@@ -489,7 +489,7 @@ const OfferCheckout = function OfferCheckout({ activeAngle, secondsRemaining }: 
                 zIndex: 10
               }}
             >
-              no cartão de crédito ou R$147 à vista
+              no cartão de crédito ou R$97 à vista
             </span>
           </div>
         </div>

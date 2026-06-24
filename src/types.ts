@@ -21,6 +21,7 @@ export interface CourseBlock {
   title: string;
   subtitle: string;
   items: string[];
+  isBonus?: boolean;
 }
 
 export interface BeforeAfterItem {

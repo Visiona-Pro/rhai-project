@@ -108,7 +108,7 @@ export default function PainPoints() {
           <h2 
             className="font-editorial-title text-[30px] sm:text-[36px] uppercase tracking-wider mb-4 leading-tight title-gold-gradient"
           >
-            Você se reconhece aqui?
+            Isso já aconteceu com você?
           </h2>
           <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto my-3" />
         </div>

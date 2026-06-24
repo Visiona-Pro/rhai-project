@@ -24,7 +24,7 @@ export default function FasesCerebro() {
           <h2 
             className="font-editorial-title text-[30px] sm:text-3xl md:text-4xl lg:text-4xl uppercase tracking-wider mb-4 leading-tight title-gold-gradient"
           >
-            O QUE MUDA NA MENTE DELE
+            ELE NÃO VAI MAIS TE IGNORAR
           </h2>
 
           {/* Subtítulo */}
@@ -90,10 +90,10 @@ export default function FasesCerebro() {
             >
               <div className="space-y-3">
                 <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '18px' /* Custom section card title font size */ }}>
-                  {activeTab === 0 && "POR QUE ELE FICA TÃO CONFORTÁVEL DEPOIS QUE VOCÊ SE AFASTA?"}
-                  {activeTab === 1 && "O SILÊNCIO DELE NÃO É O QUE VOCÊ PENSA."}
-                  {activeTab === 2 && "POR QUE ELE VOLTA QUANDO VOCÊ PARA DE CORRER?"}
-                  {activeTab === 3 && "É AQUI QUE ELE DECIDE O QUANTO VOCÊ VALE."}
+                  {activeTab === 0 && "FAÇA ELE SE APEGAR"}
+                  {activeTab === 1 && "CONQUISTE A MENTE DELE"}
+                  {activeTab === 2 && "SEJA INESQUECÍVEL"}
+                  {activeTab === 3 && "SE TORNE A MULHER DA VIDA DELE"}
                 </h3>
                 <p className="font-sans text-[13px] text-[#f8eeb7] leading-[21px] italic font-light">
                   {MALE_BRAIN_PHASES[activeTab].description}
