@@ -32,7 +32,6 @@ export default function CookieConsent() {
         background: '#0e0e0e',
         borderTop: '1px solid rgba(212,175,55,0.18)',
         padding: '14px 20px',
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: '16px',
