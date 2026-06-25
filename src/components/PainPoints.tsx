@@ -148,9 +148,6 @@ export default function PainPoints() {
 
               {/* Texto */}
               <div className="space-y-3">
-                {/* Linha fina decoradora */}
-                <div className="w-1/3 h-[1px] bg-[#D4AF37]/15 my-2" />
-
                 <p className="font-sans text-[13px] text-[#f8eeb7] font-light text-justify" style={{ lineHeight: '18px' /* Custom condensed card body height */ }}>
                   {card.description}
                 </p>

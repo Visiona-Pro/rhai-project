@@ -62,7 +62,7 @@ export default function FasesCerebro() {
         </div>
 
         {/* Painel da fase ativa */}
-        <div style={{ minHeight: '212px', height: 'auto' }} className="relative overflow-hidden rounded-none shadow-[2px_10px_45px_black] p-6 sm:p-10 lg:p-14 border border-[#996515]/20 bg-[#060504]/90">
+        <div className="relative overflow-hidden rounded-none shadow-[2px_10px_45px_black] p-6 sm:p-10 lg:p-14 border border-[#996515]/20 bg-[#060504]/90">
 
           {/* Efeito de luz amarela acesa que corre devagar ao redor do quadro */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
