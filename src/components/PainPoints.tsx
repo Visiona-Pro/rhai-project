@@ -118,7 +118,7 @@ export default function PainPoints() {
           {PAIN_CARDS.map((card) => (
             <div
               key={card.id}
-              className="glass-luxury-interactive p-6 sm:p-8 flex flex-col gap-5 relative overflow-hidden group border border-[#996515]/30 rounded-none shadow-[2px_4px_15px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(212,175,55,0.08)] transform hover:-translate-y-2.5 transition-all duration-300"
+              className="glass-luxury-interactive p-6 sm:p-8 flex flex-col gap-2 relative overflow-hidden group border border-[#996515]/30 rounded-none shadow-[2px_4px_15px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(212,175,55,0.08)] transform hover:-translate-y-2.5 transition-all duration-300"
             >
               {/* Barra inferior hover */}
               <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
