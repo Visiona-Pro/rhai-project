@@ -78,12 +78,12 @@ export default function CourseContent() {
                 className="space-y-2"
               >
                 {isBonus && (
-                  <span className="inline-flex h-7 px-3 items-center justify-center text-[0.7rem] sm:text-[0.78rem] tracking-[0.18em] bg-[#D4AF37]/15 border border-[#D4AF37] text-[#FAF9F6] uppercase font-bold shadow-[0_0_22px_rgba(212,175,55,0.55),0_0_8px_rgba(212,175,55,0.25)] mb-1">
+                  <span className="inline-flex items-center gap-1.5 text-[0.7rem] sm:text-[0.78rem] tracking-[0.18em] text-[#D4AF37] uppercase font-bold mb-3 block">
                     ★ BÔNUS EXCLUSIVO
                   </span>
                 )}
                 {block.subtitle && (
-                  <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '16px' }}>
+                  <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug lining-nums" style={{ fontSize: '16px' }}>
                     {block.subtitle}
                   </h3>
                 )}
