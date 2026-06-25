@@ -21,7 +21,7 @@ export default function FasesCerebro() {
 
         {/* Cabeçalho */}
         <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-5"> {/* ESPAÇO: mb-6 sm:mb-8 → mb-4 sm:mb-5 */}
-          <h2 
+          <h2
             className="font-editorial-title text-[30px] sm:text-3xl md:text-4xl lg:text-4xl uppercase tracking-wider mb-4 leading-tight title-gold-gradient"
           >
             ELE NÃO VAI MAIS TE IGNORAR
@@ -63,7 +63,7 @@ export default function FasesCerebro() {
 
         {/* Painel da fase ativa */}
         <div style={{ minHeight: '212px', height: 'auto' }} className="relative overflow-hidden rounded-none shadow-[2px_10px_45px_black] p-6 sm:p-10 lg:p-14 border border-[#996515]/20 bg-[#060504]/90">
-          
+
           {/* Efeito de luz amarela acesa que corre devagar ao redor do quadro */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Rotating golden conic gradient simulating a running light */}
@@ -73,7 +73,7 @@ export default function FasesCerebro() {
           </div>
 
           <div className="absolute inset-1 border border-[#D4AF37]/10 pointer-events-none z-10" />
-          
+
           {/* Big background number */}
           <div className="absolute top-2 right-4 font-serif text-[6rem] sm:text-[10rem] lg:text-[12rem] font-bold text-[#D4AF37]/[0.06] leading-none select-none pointer-events-none z-[1]">
             {MALE_BRAIN_PHASES[activeTab].num}
@@ -86,7 +86,7 @@ export default function FasesCerebro() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center relative z-10"
+              className="grid grid-cols-1 gap-6 lg:gap-8 items-center relative z-10"
             >
               <div className="space-y-3">
                 <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '18px' /* Custom section card title font size */ }}>
@@ -100,23 +100,6 @@ export default function FasesCerebro() {
                 </p>
               </div>
 
-              <div className="border-t border-[#D4AF37]/15 pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10 space-y-3">
-                <div>
-                  <span className="font-sans text-[0.68rem] sm:text-[0.75rem] tracking-[0.18em] text-[#D4AF37] font-bold uppercase block mb-2 leading-relaxed">
-                    {activeTab === 0 && "A FALSA SENSAÇÃO DE CONTROLE"}
-                    {activeTab === 1 && "TESTE SILENCIOSO"}
-                    {activeTab === 2 && "EGO FERIDO"}
-                    {activeTab === 3 && "A PROCURA"}
-                  </span>
-                </div>
-                <div className="w-8 h-[2px] bg-gradient-to-r from-[#D4AF37] to-transparent" />
-                <p className="font-sans text-[13px] text-[#908b82] leading-[21px] font-light">
-                  {activeTab === 0 && "É exatamente nesse momento que quase todas as mulheres reagem do jeito oposto ao que deveriam."}
-                  {activeTab === 1 && "A maioria das mulheres entrega tudo nessa fase sem perceber que está fazendo isso."}
-                  {activeTab === 2 && "Nem toda reaproximação é amor. Você precisa saber distinguir os dois antes de abrir espaço."}
-                  {activeTab === 3 && "Depois dessa aula, você nunca mais vai confundir silêncio com desinteresse nem reaproximação com amor."}
-                </p>
-              </div>
             </motion.div>
           </AnimatePresence>
         </div>
