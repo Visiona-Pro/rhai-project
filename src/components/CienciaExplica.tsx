@@ -92,10 +92,10 @@ export default function CienciaExplica() {
 
               <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent" />
 
-              {/* Bloco 2 — Cleópatra (imagem à esquerda, texto à direita) */}
+              {/* Bloco 2 — Cleópatra (imagem à direita, texto à esquerda no desktop) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
                 {/* Imagem Cleópatra & Marilyn */}
-                <div className="rotate-[-1.5deg] hover:rotate-0 transition-transform duration-500 ease-out">
+                <div className="md:order-2 rotate-[1.5deg] hover:rotate-0 transition-transform duration-500 ease-out">
                   <div className="overflow-hidden rounded-xl border border-[#D4AF37]/15">
                     <img
                       src="/assets/cleopatra-marilyn.jpeg"
@@ -107,7 +107,7 @@ export default function CienciaExplica() {
                 </div>
 
                 {/* Texto Cleópatra */}
-                <p className="font-editorial-title text-[16px] sm:text-[19px] uppercase tracking-wider text-[#F3E5AB] leading-snug">
+                <p className="md:order-1 font-editorial-title text-[16px] sm:text-[19px] uppercase tracking-wider text-[#F3E5AB] leading-snug">
                   Cleópatra e Marilyn Monroe dominavam os princípios de atração emocional.
                   Não era só beleza, era o poder de fazer qualquer homem ficar de joelhos diante delas.
                 </p>
