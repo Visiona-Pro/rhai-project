@@ -62,16 +62,6 @@ export default function FasesCerebro() {
                       </div>
 
                       <div className="relative z-10 space-y-2.5">
-                        {/* Bolha numerada dourada */}
-                        <div className="flex items-center gap-3">
-                          <span className="flex-shrink-0 w-9 h-9 rounded-full bg-gradient-to-b from-[#D4AF37] to-[#9c7a1f] flex items-center justify-center font-serif text-sm font-extrabold text-[#0b0908] shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-                            {phase.num}
-                          </span>
-                          <span className="font-sans text-[0.62rem] tracking-[0.18em] text-[#D4AF37] font-bold uppercase leading-tight">
-                            {phase.phaseName}
-                          </span>
-                        </div>
-
                         <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '17px' }}>
                           {SECTION_TITLES[index]}
                         </h3>
