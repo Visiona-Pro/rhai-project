@@ -84,13 +84,13 @@ export default function CourseContent() {
 
         {/* Acordeão */}
         <div className="space-y-2">
-          {COURSE_BLOCKS.map((block, blockIdx) => {
+          {COURSE_BLOCKS.map((block) => {
             const isBonus = !!block.isBonus;
-            const numLabel = `0${blockIdx + 1}`;
-            
+
             return (
               <div
                 key={block.id}
+                style={isBonus ? { marginTop: '1.5rem' } : undefined}
                 className="open rounded-none overflow-hidden border border-[#D4AF37] bg-[#0F0D0A]/95 shadow-[0_4px_30px_rgba(212,175,55,0.08)]"
               >
                 {/* Trigger Plate */}
@@ -98,36 +98,16 @@ export default function CourseContent() {
                   className="w-full flex items-center justify-between py-2.5 px-4 sm:py-3 sm:px-5 bg-transparent text-left select-none relative group"
                 >
                   <div className="flex items-center gap-3 sm:gap-4 pr-3">
-                    {/* Numeração dourada em destaque */}
-                    <div 
-                      className="select-none flex-shrink-0"
-                      style={{
-                        fontFamily: "'Playfair Display', serif",
-                        fontSize: '26px',
-                        fontWeight: '700',
-                        fontStyle: 'italic',
-                        color: 'rgba(201,147,58,0.18)',
-                        lineHeight: '1'
-                      }}
-                    >
-                      {numLabel}
-                    </div>
- 
                     <div className="space-y-0.5">
                       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                        {block.title && (
-                          <span className="font-sans text-[0.58rem] sm:text-[0.62rem] tracking-[0.24em] text-[#D4AF37] uppercase font-bold block">
-                            {block.title}
-                          </span>
-                        )}
                         {isBonus && (
-                          <span className="h-7 px-3 flex items-center justify-center text-[0.7rem] sm:text-[0.78rem] tracking-[0.18em] bg-[#D4AF37]/15 border border-[#D4AF37] text-[#FAF9F6] uppercase font-bold rounded-none shadow-[0_0_22px_rgba(212,175,55,0.55),0_0_8px_rgba(212,175,55,0.25)] transition-all duration-300">
+                          <span className="flex items-center text-[0.7rem] sm:text-[0.78rem] tracking-[0.18em] text-[#D4AF37] uppercase font-bold">
                             ★ BÔNUS EXCLUSIVO
                           </span>
                         )}
                       </div>
                       {block.subtitle && (
-                        <h3 className={`font-editorial-title text-white uppercase tracking-wider leading-snug${isBonus ? ' mt-2' : ''}`} style={{ fontSize: '16px' }}>
+                        <h3 className={`font-sans font-bold text-white uppercase tracking-wider leading-snug${isBonus ? ' mt-2' : ''}`} style={{ fontSize: '16px' }}>
                           {block.subtitle}
                         </h3>
                       )}
@@ -139,7 +119,7 @@ export default function CourseContent() {
  
                 {/* Corpo com fundo sutilmente iluminado */}
                 <div 
-                  className="max-h-none border-t border-[#D4AF37]/15 opacity-100 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_100%)] overflow-hidden"
+                  className="max-h-none opacity-100 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_100%)] overflow-hidden"
                 >
                   <div className="py-2 px-4 sm:py-3 sm:px-5 space-y-1.5">
                     {block.items.map((item, idx) => (
