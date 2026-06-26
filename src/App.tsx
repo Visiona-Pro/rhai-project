@@ -88,8 +88,8 @@ export default function App() {
           <FasesCerebro />
 
           {/* Faixa de destaque pós-fases */}
-          <div className="relative py-8 sm:py-10 bg-[#060504] border-y border-[#D4AF37]/25 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/6 to-transparent pointer-events-none" />
+          <div className="relative py-8 sm:py-10 bg-gradient-to-b from-[#0e0c08] to-[#0a0805] border-y border-[#D4AF37]/25 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/8 to-transparent pointer-events-none" />
             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
             <div className="container-site text-center relative z-10 px-6">
