@@ -36,7 +36,7 @@ export default function CienciaExplica() {
 
         {/* Card principal */}
         <motion.div
-          className="max-w-2xl mx-auto"
+          className="max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
@@ -51,63 +51,67 @@ export default function CienciaExplica() {
               ✦
             </div>
 
-            <div className="space-y-5 relative z-10">
+            <div className="space-y-8 relative z-10">
 
-              {/* Imagem Harvard */}
-              <div className="overflow-hidden rounded-xl border border-[#D4AF37]/15">
-                <img
-                  src="/assets/harvard-research.jpeg"
-                  alt="Pesquisa Harvard Medical School — O amor e o cérebro"
-                  className="w-full h-auto block"
-                  loading="lazy"
-                />
+              {/* Bloco 1 — Harvard (imagem à esquerda, texto à direita) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                {/* Imagem Harvard */}
+                <div className="rotate-[-1.5deg] hover:rotate-0 transition-transform duration-500 ease-out">
+                  <div className="overflow-hidden rounded-xl border border-[#D4AF37]/15">
+                    <img
+                      src="/assets/harvard-research.jpeg"
+                      alt="Pesquisa Harvard Medical School — O amor e o cérebro"
+                      className="w-full h-auto block"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="text-[11px] font-bold text-[#908b82] text-center mt-2">
+                    Estudo: "O Amor e o Cérebro" — Harvard Medical School
+                  </p>
+                </div>
+
+                {/* Texto Harvard */}
+                <div className="space-y-4">
+                  <p className="font-sans text-[13px] sm:text-[14px] text-[#F5F1E8] leading-[1.8] font-light">
+                    Pesquisadores da{' '}
+                    <span className="text-[#F3E5AB] font-semibold">Universidade de Harvard</span>{' '}
+                    já provaram: quando um homem desenvolve atração emocional de verdade, as mesmas áreas do cérebro ligadas ao{' '}
+                    <span className="text-[#F3E5AB] font-semibold">vício</span>{' '}
+                    são ativadas.
+                  </p>
+                  <p className="font-editorial-title text-[16px] sm:text-[18px] uppercase tracking-wider text-[#F3E5AB] leading-snug">
+                    Ele não consegue parar de pensar em você.<br />
+                    Não é sorte. É neurologia.
+                  </p>
+                  <p className="font-sans text-[13px] sm:text-[14px] text-[#908b82] leading-[1.8] font-light">
+                    E quando você aplica o que ensino corretamente, ele literalmente se torna{' '}
+                    <span className="title-gold-gradient font-semibold">"viciado" em você</span>.
+                  </p>
+                </div>
               </div>
-              <p className="text-[11px] font-bold text-[#908b82] text-center -mt-1">
-                Estudo: "O Amor e o Cérebro" — Harvard Medical School
-              </p>
 
-              {/* Citação histórica */}
-              <p className="font-editorial-title text-[16px] sm:text-[19px] uppercase tracking-wider text-[#F3E5AB] leading-snug text-center">
-                Cleópatra e Marilyn Monroe dominavam os princípios de atração emocional.
-                Não era só beleza, era o poder de fazer qualquer homem ficar de joelhos diante delas.
-              </p>
+              <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent" />
 
-              {/* Imagem Cleópatra & Marilyn */}
-              <div className="overflow-hidden rounded-xl border border-[#D4AF37]/15">
-                <img
-                  src="/assets/cleopatra-marilyn.jpeg"
-                  alt="Cleópatra e Marilyn Monroe — poder de atração emocional"
-                  className="w-full h-auto block"
-                  loading="lazy"
-                />
-              </div>
+              {/* Bloco 2 — Cleópatra (imagem à esquerda, texto à direita) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                {/* Imagem Cleópatra & Marilyn */}
+                <div className="rotate-[-1.5deg] hover:rotate-0 transition-transform duration-500 ease-out">
+                  <div className="overflow-hidden rounded-xl border border-[#D4AF37]/15">
+                    <img
+                      src="/assets/cleopatra-marilyn.jpeg"
+                      alt="Cleópatra e Marilyn Monroe — poder de atração emocional"
+                      className="w-full h-auto block"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
 
-              {/* Destaque Harvard */}
-              <div className="border-l-2 border-[#D4AF37] pl-4 sm:pl-6">
-                <p className="font-sans text-[13px] sm:text-[14px] text-[#F5F1E8] leading-[1.8] font-light">
-                  Pesquisadores da{' '}
-                  <span className="text-[#F3E5AB] font-semibold">Universidade de Harvard</span>{' '}
-                  já provaram: quando um homem desenvolve atração emocional de verdade, as mesmas áreas do cérebro ligadas ao{' '}
-                  <span className="text-[#F3E5AB] font-semibold">vício</span>{' '}
-                  são ativadas.
+                {/* Texto Cleópatra */}
+                <p className="font-editorial-title text-[16px] sm:text-[19px] uppercase tracking-wider text-[#F3E5AB] leading-snug">
+                  Cleópatra e Marilyn Monroe dominavam os princípios de atração emocional.
+                  Não era só beleza, era o poder de fazer qualquer homem ficar de joelhos diante delas.
                 </p>
               </div>
-
-              <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent" />
-
-              {/* Frase de impacto */}
-              <p className="font-editorial-title text-[17px] sm:text-[20px] uppercase tracking-wider text-[#F3E5AB] leading-snug text-center">
-                Ele não consegue parar de pensar em você.<br />
-                Não é sorte. É neurologia.
-              </p>
-
-              <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent" />
-
-              {/* Conclusão */}
-              <p className="font-sans text-[13px] sm:text-[14px] text-[#908b82] leading-[1.8] font-light text-center">
-                E quando você aplica o que ensino corretamente, ele literalmente se torna{' '}
-                <span className="title-gold-gradient font-semibold">"viciado" em você</span>.
-              </p>
 
             </div>
           </div>
