@@ -49,10 +49,22 @@ export function trackPageView() {
   fbq("track", "PageView");
 }
 
-// Chamado para eventos de conversão (ex.: InitiateCheckout, ViewContent)
+// Eventos padrão reconhecidos pelo Meta — conforme META.md
+const STANDARD_EVENTS = new Set([
+  "AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration",
+  "Contact", "CustomizeProduct", "Donate", "FindLocation", "InitiateCheckout",
+  "Lead", "Purchase", "Schedule", "Search", "StartTrial", "SubmitApplication",
+  "Subscribe", "ViewContent",
+]);
+
+// Eventos padrão usam fbq('track'); eventos customizados usam fbq('trackCustom')
+// fbq('init') NÃO deve ser chamado aqui — já é feito uma única vez pelo fbpixel.js
 export function firePixelEvent(event: string, data?: Record<string, unknown>) {
-  fbq("init", PIXEL_ID);
-  fbq("track", event, data ?? {});
+  if (STANDARD_EVENTS.has(event)) {
+    fbq("track", event, data ?? {});
+  } else {
+    fbq("trackCustom", event, data ?? {});
+  }
 }
 
 // Envia propriedade customizada ao Microsoft Clarity (filtrável nas gravações)

@@ -128,17 +128,17 @@ export default function PainPoints() {
 
               {/* Header: Titulo e Numeração Lado a Lado (Escrito na frente do número) */}
               <div className="flex items-start justify-between gap-4 relative">
-                <h3 className="font-editorial-title text-[#FFF] uppercase tracking-widest leading-snug flex-1">
-                  <span className="ler-revelar text-[16px]">{card.title}</span>
+                <h3 className="font-sans font-bold text-[#FFF] uppercase tracking-wide leading-snug flex-1">
+                  <span className="ler-revelar text-[13px]">{card.title}</span>
                 </h3>
 
-                <div className="relative w-11 h-11 flex-shrink-0 flex items-center justify-center">
+                <div className="relative w-14 h-14 flex-shrink-0 flex items-center justify-center">
                   {/* Premium Static Gold Backlight Aura - completely stationary, pure high-quality light glow */}
-                  <span className="absolute -inset-2 rounded-full bg-[#D4AF37]/25 blur-[10px] opacity-90 pointer-events-none" />
+                  <span className="absolute -inset-3 rounded-full bg-[#D4AF37]/25 blur-[10px] opacity-90 pointer-events-none" />
                   <span className="absolute inset-0 rounded-full bg-[#D4AF37]/35 blur-[4px] opacity-100 pointer-events-none" />
-                  
+
                   {/* Main high-intensity premium glowing bullet */}
-                  <div className="relative w-11 h-11 rounded-full bg-gradient-to-b from-[#1e1913] to-[#0b0908] border-2 border-[#D4AF37] flex items-center justify-center font-serif text-sm font-extrabold text-[#FFFDF4] shadow-[0_0_15px_rgba(212,175,55,0.5)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.8)] group-hover:scale-105 transition-all duration-300 z-10">
+                  <div className="relative w-14 h-14 rounded-full bg-gradient-to-b from-[#1e1913] to-[#0b0908] border-2 border-[#D4AF37] flex items-center justify-center font-serif text-lg font-extrabold text-[#FFFDF4] shadow-[0_0_15px_rgba(212,175,55,0.5)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.8)] group-hover:scale-105 transition-all duration-300 z-10">
                     {/* Inner gold concentric boundary line to add extreme depth and craft refinement */}
                     <div className="absolute inset-[2px] rounded-full border border-[#D4AF37]/25 pointer-events-none" />
                     {card.icon}

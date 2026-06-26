@@ -67,9 +67,8 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToOffer = React.useCallback(() => {
-    const el = document.getElementById('oferta-section');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const goToCheckout = React.useCallback(() => {
+    window.open("https://pay.kiwify.com.br/QZs39JM", "_blank", "noopener,noreferrer");
   }, []);
 
   return (
@@ -78,7 +77,7 @@ export default function App() {
 
       {/* Hero: seções renderizadas imediatamente sem lag ou shift estrutural */}
       <Hero
-        onCtaClick={scrollToOffer}
+        onCtaClick={goToCheckout}
         activeAngle={activeAngle}
       />
 
