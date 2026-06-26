@@ -115,10 +115,12 @@ export default function PainPoints() {
 
         {/* Grid de cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-6xl mx-auto"> {/* CORRIGIDO: Substituídas dimensões rígidas de pixel (width: 1150px, height) por classes responsivas nativas para grids */}
-          {PAIN_CARDS.map((card) => (
+          {PAIN_CARDS.map((card, index) => {
+            const isLoneLast = index === PAIN_CARDS.length - 1 && PAIN_CARDS.length % 3 === 1;
+            return (
             <div
               key={card.id}
-              className="glass-luxury-interactive p-6 sm:p-8 flex flex-col gap-5 relative overflow-hidden group border border-[#996515]/30 rounded-none shadow-[2px_4px_15px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(212,175,55,0.08)] transform hover:-translate-y-2.5 transition-all duration-300"
+              className={`glass-luxury-interactive p-6 sm:p-8 flex flex-col gap-5 relative overflow-hidden group border border-[#996515]/30 rounded-none shadow-[2px_4px_15px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(212,175,55,0.08)] transform hover:-translate-y-2.5 transition-all duration-300 ${isLoneLast ? 'md:col-start-2' : ''}`}
             >
               {/* Barra inferior hover */}
               <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
@@ -147,7 +149,8 @@ export default function PainPoints() {
                 </p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Mensagem Estratégica abaixo dos quadros */}
