@@ -100,23 +100,6 @@ export default function FasesCerebro() {
                 </p>
               </div>
 
-              <div className="border-t border-[#D4AF37]/15 pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10 space-y-3">
-                <div>
-                  <span className="font-sans text-[0.68rem] sm:text-[0.75rem] tracking-[0.18em] text-[#D4AF37] font-bold uppercase block mb-2 leading-relaxed">
-                    {activeTab === 0 && "A FALSA SENSAÇÃO DE CONTROLE"}
-                    {activeTab === 1 && "TESTE SILENCIOSO"}
-                    {activeTab === 2 && "EGO FERIDO"}
-                    {activeTab === 3 && "A PROCURA"}
-                  </span>
-                </div>
-                <div className="w-8 h-[2px] bg-gradient-to-r from-[#D4AF37] to-transparent" />
-                <p className="font-sans text-[13px] text-[#908b82] leading-[21px] font-light">
-                  {activeTab === 0 && "É exatamente nesse momento que quase todas as mulheres reagem do jeito oposto ao que deveriam."}
-                  {activeTab === 1 && "A maioria das mulheres entrega tudo nessa fase sem perceber que está fazendo isso."}
-                  {activeTab === 2 && "Nem toda reaproximação é amor. Você precisa saber distinguir os dois antes de abrir espaço."}
-                  {activeTab === 3 && "Depois dessa aula, você nunca mais vai confundir silêncio com desinteresse nem reaproximação com amor."}
-                </p>
-              </div>
             </motion.div>
           </AnimatePresence>
         </div>
