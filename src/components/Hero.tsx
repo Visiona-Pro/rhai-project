@@ -1,8 +1,25 @@
 import React from 'react';
-import { VturbPlayer } from './obrigado/VturbPlayer';
+import VturbSmartPlayer from './VturbSmartPlayer';
 import { motion, AnimatePresence } from 'motion/react';
 import { CopyAngle } from '../App';
 import ImageUpload from './ImageUpload';
+
+// Garante que apenas um SmartPlayer (mobile OU desktop) seja montado por vez —
+// o web component usa um id fixo e dois elementos iguais quebram a inicialização.
+function useIsDesktop(): boolean {
+  const query = '(min-width: 768px)';
+  const [isDesktop, setIsDesktop] = React.useState<boolean>(
+    () => typeof window !== 'undefined' && window.matchMedia(query).matches
+  );
+  React.useEffect(() => {
+    const mql = window.matchMedia(query);
+    const handler = () => setIsDesktop(mql.matches);
+    handler();
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+  return isDesktop;
+}
 
 
 interface HeroProps {
@@ -43,6 +60,7 @@ const PARTICLES: { left: string; w: string; animStyle: React.CSSProperties }[] =
 const VSL_REVEAL_SECONDS = 615;
 
 const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal, mobileRevealed }: HeroProps) {
+  const isDesktop = useIsDesktop();
   const mobileRevealFiredRef = React.useRef(false);
 
   const handleMobileTimeUpdate = React.useCallback((t: number) => {
@@ -312,18 +330,17 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
             <div className="block md:hidden w-full">
               <div
                 className="relative mx-auto"
-                style={{ width: 'min(284px, 100%)', aspectRatio: '284/484' }}
+                style={{ width: 'min(284px, 100%)' }}
               >
                 <div className="absolute -inset-16 bg-[radial-gradient(circle,rgba(255,255,255,0.10)_0%,rgba(240,240,240,0.04)_50%,transparent_80%)] rounded-full blur-[45px] z-0 pointer-events-none luz-branca-movimento" />
                 <div className="absolute -inset-8 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,transparent_70%)] rounded-full blur-[35px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-3s', animationDuration: '8s' }} />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] bg-[radial-gradient(circle,rgba(196,163,79,0.06)_0%,transparent_70%)] blur-[55px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-1.5s', animationDuration: '14s' }} />
-                <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
-                  <VturbPlayer
-                    src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/VSL_hd.mp4"
-                    containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
-                    disablePause
-                    onTimeUpdate={onMobileReveal ? handleMobileTimeUpdate : undefined}
-                  />
+                <div className="relative z-10 w-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
+                  {!isDesktop && (
+                    <VturbSmartPlayer
+                      onTimeUpdate={onMobileReveal ? handleMobileTimeUpdate : undefined}
+                    />
+                  )}
                 </div>
                 <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-40 h-12 bg-[#c4a34f]/10 rounded-full blur-[30px] pointer-events-none z-0" />
               </div>
@@ -449,11 +466,10 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
             transition={{ duration: 1.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="hidden md:flex justify-center w-full max-w-full mt-2.5 md:mt-0 lg:-mt-2"
           >
-            <div 
+            <div
               className="relative mx-auto"
               style={{
-                width: 'min(284px, 100%)',
-                aspectRatio: '284/484'
+                width: 'min(284px, 100%)'
               }}
             >
               {/* Brilhos suaves por trás do vídeo */}
@@ -461,12 +477,8 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               <div className="absolute -inset-8 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,transparent_70%)] rounded-full blur-[35px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-3s', animationDuration: '8s' }} />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] bg-[radial-gradient(circle,rgba(196,163,79,0.06)_0%,transparent_70%)] blur-[55px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-1.5s', animationDuration: '14s' }} />
 
-              <div className="relative z-10 w-full h-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
-                <VturbPlayer
-                  src="https://rhaiane-videos-guard.rhaiane-media.workers.dev/VSL_hd.mp4"
-                  containerClassName="relative w-full h-full bg-black overflow-hidden group font-sans"
-                  disablePause
-                />
+              <div className="relative z-10 w-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
+                {isDesktop && <VturbSmartPlayer />}
               </div>
 
               {/* Glow dourado sutil embaixo */}
