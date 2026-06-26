@@ -86,7 +86,7 @@ export default function FasesCerebro() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center relative z-10"
+              className="relative z-10"
             >
               <div className="space-y-3">
                 <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '18px' /* Custom section card title font size */ }}>
@@ -99,7 +99,6 @@ export default function FasesCerebro() {
                   {MALE_BRAIN_PHASES[activeTab].description}
                 </p>
               </div>
-
             </motion.div>
           </AnimatePresence>
         </div>
