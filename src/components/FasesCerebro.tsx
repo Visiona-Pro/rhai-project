@@ -62,7 +62,7 @@ export default function FasesCerebro() {
                       </div>
 
                       <div className="relative z-10 space-y-2.5">
-                        <h3 className="font-editorial-title text-white uppercase tracking-wider leading-snug" style={{ fontSize: '17px' }}>
+                        <h3 className="font-sans text-[13px] text-white uppercase tracking-wider leading-snug font-bold">
                           {SECTION_TITLES[index]}
                         </h3>
 
