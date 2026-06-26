@@ -225,7 +225,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
   return (
     <header
       id="hero-section"
-      className="relative flex items-start justify-center overflow-hidden bg-black text-white min-h-screen pt-4 sm:pt-6 pb-6 sm:pb-10"
+      className="relative flex items-start justify-center overflow-hidden bg-black text-white min-h-screen md:min-h-0 pt-4 sm:pt-6 pb-4 sm:pb-6"
     >
       {/* Fundo cinematográfico */}
       <div className="absolute inset-0 z-0 pointer-events-none">
