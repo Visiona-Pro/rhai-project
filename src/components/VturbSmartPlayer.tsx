@@ -11,9 +11,11 @@ const PLAYER_HTML = `<vturb-smartplayer id="${PLAYER_ID}" style="display: block;
 interface VturbSmartPlayerProps {
   /** Recebe o tempo atual do vídeo (em segundos) a cada atualização. */
   onTimeUpdate?: (seconds: number) => void;
+  /** Impede que o usuário pause o vídeo — retoma automaticamente ao detectar pausa. */
+  disablePause?: boolean;
 }
 
-export default function VturbSmartPlayer({ onTimeUpdate }: VturbSmartPlayerProps) {
+export default function VturbSmartPlayer({ onTimeUpdate, disablePause }: VturbSmartPlayerProps) {
   // Injeta o loader do player apenas uma vez por página.
   useEffect(() => {
     const loaderId = `vturb-loader-${PLAYER_ID}`;
@@ -53,6 +55,23 @@ export default function VturbSmartPlayer({ onTimeUpdate }: VturbSmartPlayerProps
 
     return () => window.clearInterval(interval);
   }, [onTimeUpdate]);
+
+  useEffect(() => {
+    if (!disablePause) return;
+    let attached = false;
+    const interval = window.setInterval(() => {
+      if (attached) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const inst = ((window as any).smartplayer?.instances ?? []).find((i: any) => i?.video) ;
+      if (!inst?.video) return;
+      attached = true;
+      window.clearInterval(interval);
+      inst.video.addEventListener('pause', () => {
+        inst.video.play().catch(() => {});
+      });
+    }, 500);
+    return () => window.clearInterval(interval);
+  }, [disablePause]);
 
   return <div dangerouslySetInnerHTML={{ __html: PLAYER_HTML }} />;
 }

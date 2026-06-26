@@ -27,6 +27,7 @@ interface HeroProps {
   activeAngle: CopyAngle;
   onMobileReveal?: () => void;
   mobileRevealed?: boolean;
+  disablePause?: boolean;
 }
 
 // Estilos extraídos para fora do componente — criados uma vez, nunca recriados
@@ -59,7 +60,7 @@ const PARTICLES: { left: string; w: string; animStyle: React.CSSProperties }[] =
 
 const VSL_REVEAL_SECONDS = 615;
 
-const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal, mobileRevealed }: HeroProps) {
+const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal, mobileRevealed, disablePause }: HeroProps) {
   const isDesktop = useIsDesktop();
   const mobileRevealFiredRef = React.useRef(false);
 
@@ -339,6 +340,7 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
                   {!isDesktop && (
                     <VturbSmartPlayer
                       onTimeUpdate={onMobileReveal ? handleMobileTimeUpdate : undefined}
+                      disablePause={disablePause}
                     />
                   )}
                 </div>
@@ -478,7 +480,12 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] bg-[radial-gradient(circle,rgba(196,163,79,0.06)_0%,transparent_70%)] blur-[55px] z-0 pointer-events-none luz-branca-movimento" style={{ animationDelay: '-1.5s', animationDuration: '14s' }} />
 
               <div className="relative z-10 w-full border border-[#c4a34f]/50 overflow-hidden rounded-none">
-                {isDesktop && <VturbSmartPlayer />}
+                {isDesktop && (
+                  <VturbSmartPlayer
+                    onTimeUpdate={onMobileReveal ? handleMobileTimeUpdate : undefined}
+                    disablePause={disablePause}
+                  />
+                )}
               </div>
 
               {/* Glow dourado sutil embaixo */}
