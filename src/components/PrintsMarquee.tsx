@@ -17,6 +17,8 @@ const PRINTS = [
 
 const row1 = [...PRINTS, ...PRINTS];
 
+const MAIN_CHECKOUT_URL = 'https://pay.kiwify.com.br/QZs39JM';
+
 function Lightbox({ index, onClose, onPrev, onNext }: {
   index: number;
   onClose: () => void;
@@ -148,6 +150,20 @@ const PrintsMarquee = React.memo(function PrintsMarquee() {
           </strong>{' '}
           E hoje vivem o relacionamento que antes parecia impossível.
         </p>
+      </div>
+
+      {/* CTA para checkout */}
+      <div className="text-center mt-8 px-6 max-w-md mx-auto relative z-10">
+        <a
+          href={MAIN_CHECKOUT_URL}
+          target="_self"
+          rel="noopener noreferrer"
+          className="btn-glitter-gold w-full text-center block cursor-pointer"
+        >
+          <span className="relative z-10 flex items-center justify-center gap-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+            AGORA É SUA VEZ
+          </span>
+        </a>
       </div>
 
       {/* Rodapé discreto */}
