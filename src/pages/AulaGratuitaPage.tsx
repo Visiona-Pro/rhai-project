@@ -59,9 +59,11 @@ export default function AulaGratuitaPage() {
   }, []);
 
   const [contentRevealed, setContentRevealed] = React.useState(false);
+  const [ctaVisible, setCtaVisible] = React.useState(false);
 
   const handleReveal = React.useCallback(() => {
     setContentRevealed(true);
+    setCtaVisible(true);
   }, []);
 
   const goToCheckout = React.useCallback(() => {
@@ -77,6 +79,7 @@ export default function AulaGratuitaPage() {
         activeAngle={activeAngle}
         onMobileReveal={handleReveal}
         disablePause
+        showCta={ctaVisible}
       />
 
       <main className={contentRevealed ? undefined : 'hidden'}>

@@ -28,6 +28,8 @@ interface HeroProps {
   onMobileReveal?: () => void;
   mobileRevealed?: boolean;
   disablePause?: boolean;
+  /** undefined = sempre visível (página principal). false/true = controlado por tempo (aulagratuita). */
+  showCta?: boolean;
 }
 
 // Estilos extraídos para fora do componente — criados uma vez, nunca recriados
@@ -60,8 +62,9 @@ const PARTICLES: { left: string; w: string; animStyle: React.CSSProperties }[] =
 
 const VSL_REVEAL_SECONDS = 615;
 
-const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal, mobileRevealed, disablePause }: HeroProps) {
+const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal, mobileRevealed, disablePause, showCta }: HeroProps) {
   const isDesktop = useIsDesktop();
+  const ctaReady = showCta === undefined || showCta === true;
   const mobileRevealFiredRef = React.useRef(false);
 
   const handleMobileTimeUpdate = React.useCallback((t: number) => {
@@ -359,8 +362,46 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               </p>
             </div>
 
+            {/* CTA Mobile — slide-up abaixo do vídeo aos 10:15 (aulagratuita) */}
+            <AnimatePresence>
+              {showCta === true && (
+                <motion.div
+                  key="mobile-cta-reveal"
+                  className="block md:hidden mt-5 px-1"
+                  initial={{ opacity: 0, y: 48 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 48 }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <button
+                    type="button"
+                    onClick={onCtaClick}
+                    className="btn-glitter-gold w-full animate-none mb-0.5"
+                  >
+                    <span className="relative z-10 flex items-center justify-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+                      {c.cta}
+                    </span>
+                  </button>
+                  <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-3.5 w-full" style={{ lineHeight: '1' }}>
+                    <div className="flex items-center gap-[3px]" style={STYLES.trustBadgeItem}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                      <span>Acesso imediato</span>
+                    </div>
+                    <div className="flex items-center gap-[3px]" style={STYLES.trustBadgeItem}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      <span>Compra segura</span>
+                    </div>
+                    <div className="flex items-center gap-[3px]" style={STYLES.trustBadgeItem}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9933a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+                      <span>7 dias de garantia</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Badge + CTA */}
-            <div className={mobileRevealed === false ? 'hidden md:contents' : 'contents'}>
+            <div className={showCta !== undefined ? 'hidden md:contents' : (mobileRevealed === false ? 'hidden md:contents' : 'contents')}>
 
             {/* Descrição — apenas desktop */}
             <AnimatePresence mode="wait">
@@ -413,16 +454,17 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
               </p>
             </motion.div>
 
-            {/* CTA */}
-            {/* CORRIGIDO: Limpadas as larguras fixas de 550px, alturas fixas e margens esquerdas rígidas (marginLeft de 60px) que quebravam no mobile */}
+            {/* CTA Desktop — fade-in aos 10:15 (aulagratuita) ou imediato (página principal) */}
+            <AnimatePresence>
+              {ctaReady && (
             <motion.div
+              key="desktop-cta"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.05, ease: 'easeOut' }}
+              transition={{ duration: 1, delay: showCta === undefined ? 1.05 : 0, ease: 'easeOut' }}
               className="flex flex-col gap-3 items-start w-full max-w-full"
               style={{ marginTop: '22px' }}
             >
-              {/* CORRIGIDO: Convertidos estilos inline estéticos de bordas e raio para classes nativas ou simplificadas, sem dimensões fixas */}
               <button
                 id="hero-cta-btn"
                 type="button"
@@ -458,6 +500,8 @@ const Hero = React.memo(function Hero({ onCtaClick, activeAngle, onMobileReveal,
                 </div>
               </div>
             </motion.div>
+              )}
+            </AnimatePresence>
             </div>{/* fim do wrapper Badge + CTA oculto mobile */}
           </div>
 
