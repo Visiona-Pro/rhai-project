@@ -219,7 +219,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 'test-6',
     initial: 'L',
     name: 'Larissa P.',
-    text: '"R$ 147 foi o melhor investimento estratégico da minha vida amorosa. O método de posicionamento de alto valor me deu frutos e resultados visíveis em menos de dois dias."'
+    text: '"R$197 foi o melhor investimento estratégico da minha vida amorosa. O método de posicionamento de alto valor me deu frutos e resultados visíveis em menos de dois dias."'
   }
 ];
 
