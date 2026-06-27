@@ -8,6 +8,7 @@ import './index.css';
 const ObrigadoPage    = lazy(() => import('./pages/ObrigadoPage.tsx'));
 const PrivacidadePage = lazy(() => import('./pages/PrivacidadePage.tsx'));
 const AulaGratuitaPage = lazy(() => import('./pages/AulaGratuitaPage.tsx'));
+const QuizPage        = lazy(() => import('./pages/QuizPage.tsx'));
 
 function Root() {
   usePixelConsent();
@@ -47,6 +48,14 @@ function Root() {
           element={
             <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
               <PrivacidadePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/quiz"
+          element={
+            <Suspense fallback={<div className="min-h-screen bg-black" />}>
+              <QuizPage />
             </Suspense>
           }
         />
