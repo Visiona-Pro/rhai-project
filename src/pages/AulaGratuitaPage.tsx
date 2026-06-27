@@ -64,9 +64,8 @@ export default function AulaGratuitaPage() {
     setContentRevealed(true);
   }, []);
 
-  const scrollToOffer = React.useCallback(() => {
-    const el = document.getElementById('oferta-section');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const goToCheckout = React.useCallback(() => {
+    window.open("https://pay.kiwify.com.br/QZs39JM", "_blank", "noopener,noreferrer");
   }, []);
 
   return (
@@ -74,7 +73,7 @@ export default function AulaGratuitaPage() {
       <CookieConsent />
 
       <Hero
-        onCtaClick={scrollToOffer}
+        onCtaClick={goToCheckout}
         activeAngle={activeAngle}
         onMobileReveal={handleReveal}
         disablePause
