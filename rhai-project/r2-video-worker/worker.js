@@ -4,7 +4,7 @@
 //   (referer vazio é permitido — extensões de privacidade removem o header)
 // - Suporta Range requests (seek do player)
 
-const ALLOWED_FILES = new Set(['VSL_web_v2.mp4', 'VSL_hd.mp4', 'UPSELL_web_v2.mp4']);
+const ALLOWED_FILES = new Set(['VSL_web_v2.mp4', 'VSL_hd.mp4', 'UPSELL_web_v2.mp4', 'bg-video.mp4']);
 
 const ALLOWED_REFERER_HOSTS = (host) =>
   host === 'rhaiane.com.br' ||

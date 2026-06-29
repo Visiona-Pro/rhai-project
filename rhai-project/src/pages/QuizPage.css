@@ -34,11 +34,18 @@
 .qw .vbg-video{
   width:100%;height:100%;
   object-fit:cover;
+  object-position:center center;
   opacity:0.42;
   display:block;
   pointer-events:none;
   user-select:none;
   -webkit-user-select:none;
+}
+@media(max-width:768px){
+  .qw .vbg-video{
+    object-fit:contain;
+    transform:scale(1.15);
+  }
 }
 .qw .vbg-shield{
   position:absolute;inset:0;

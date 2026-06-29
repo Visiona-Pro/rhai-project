@@ -6,11 +6,17 @@ export default function VideoBackground() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    v.load();
     v.play().catch(() => {});
-    // Bloqueia qualquer tentativa de PiP via API
+    // Fallback para iOS que bloqueia autoplay até primeiro toque
+    const onTouch = () => { v.play().catch(() => {}); };
+    document.addEventListener('touchstart', onTouch, { once: true });
     const deny = (e: Event) => e.preventDefault();
     document.addEventListener('enterpictureinpicture', deny);
-    return () => document.removeEventListener('enterpictureinpicture', deny);
+    return () => {
+      document.removeEventListener('touchstart', onTouch);
+      document.removeEventListener('enterpictureinpicture', deny);
+    };
   }, []);
 
   return (
