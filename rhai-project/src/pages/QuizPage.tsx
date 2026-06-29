@@ -149,8 +149,8 @@ export default function QuizPage() {
   }, []);
 
   function track(evento: string, params?: Record<string, unknown>) {
-    firePixelEvent(evento, params);
     fireClarity('quiz', evento);
+    window.gtag?.('event', evento, params ?? {});
   }
 
   function comecar() {
