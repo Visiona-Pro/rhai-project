@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "node scripts/convert-images.mjs",
     "predev": "node scripts/convert-images.mjs",
-    "dev": "vite --port=3000 --host=0.0.0.0",
+    "dev": "vite --port=3000 --host=127.0.0.1",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
@@ -25,7 +25,7 @@
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
-    "sharp": "^0.35.0",
+    "sharp": "^0.35.2",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",

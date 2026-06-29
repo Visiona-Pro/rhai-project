@@ -1,8 +1,9 @@
 import './QuizPage.css';
 import { useState, useEffect, useRef } from 'react';
 import { firePixelEvent, fireClarity } from '../hooks/usePixelConsent';
+import VideoBackground from '../components/VideoBackground';
 
-const CHECKOUT_URL = 'https://pay.kiwify.com.br/QZs39JM';
+const CHECKOUT_URL = 'https://pay.kiwify.com.br/1e2xhVp';
 const TOTAL = 8;
 type Screen = 'intro' | 'quiz' | 'loading' | 'resultado';
 type Letra = 'A' | 'B' | 'C' | 'D';
@@ -212,6 +213,7 @@ export default function QuizPage() {
 
   return (
     <div className="qw">
+      <VideoBackground />
       <div className="qw-particles" ref={particlesRef} />
 
       {screen === 'loading' && (
