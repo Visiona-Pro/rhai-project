@@ -7,7 +7,6 @@ export default function VideoBackground() {
     const v = videoRef.current;
     if (!v) return;
     v.muted = true;
-    v.muted = true;
     v.load();
     v.play().catch(() => {});
     // Fallback para iOS que bloqueia autoplay até primeiro toque
@@ -30,6 +29,8 @@ export default function VideoBackground() {
         muted
         loop
         playsInline
+        preload="auto"
+        preload="auto"
         disablePictureInPicture
         disableRemotePlayback
         controlsList="nodownload nofullscreen noremoteplayback"
