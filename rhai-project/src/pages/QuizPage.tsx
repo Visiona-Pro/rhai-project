@@ -1,6 +1,5 @@
 import './QuizPage.css';
 import { useState, useEffect, useRef } from 'react';
-import { firePixelEvent, fireClarity } from '../hooks/usePixelConsent';
 import VideoBackground from '../components/VideoBackground';
 
 const CHECKOUT_URL = 'https://pay.kiwify.com.br/1e2xhVp';
@@ -149,7 +148,6 @@ export default function QuizPage() {
   }, []);
 
   function track(evento: string, params?: Record<string, unknown>) {
-    fireClarity('quiz', evento);
     window.gtag?.('event', evento, params ?? {});
   }
 
@@ -194,7 +192,6 @@ export default function QuizPage() {
       window.scrollTo(0, 0);
       const nomes: Record<number, string> = { 1: 'investidora', 2: 'ansiosa', 3: 'autossuficiente' };
       track('quiz_resultado_' + nomes[p]);
-      firePixelEvent('Lead', { content_name: 'perfil_' + nomes[p] });
     }, 2000);
   }
 
@@ -208,7 +205,6 @@ export default function QuizPage() {
 
   function trackCTA() {
     track('quiz_cta_clicado');
-    firePixelEvent('InitiateCheckout', { value: 97, currency: 'BRL' });
   }
 
   return (

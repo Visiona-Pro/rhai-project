@@ -6,6 +6,8 @@ export default async function middleware(request: Request): Promise<Response> {
   const html = await res.text();
 
   const modified = html
+    .replace('<script defer src="/fbpixel.js"></script>', '')
+    .replace('<script defer src="/clarity-init.js"></script>', '')
     .replace(
       '<title>Porque Eles Perdem o Interesse — Rhaiane Pimenta</title>',
       '<title>Começar o Quiz</title>'
