@@ -6,6 +6,8 @@ export default function VideoBackground() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    v.muted = true;
+    v.muted = true;
     v.load();
     v.play().catch(() => {});
     // Fallback para iOS que bloqueia autoplay até primeiro toque
