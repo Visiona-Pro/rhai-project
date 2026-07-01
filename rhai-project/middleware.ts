@@ -8,7 +8,7 @@ export default async function middleware(request: Request): Promise<Response> {
   const modified = html
     .replace(
       '<title>Porque Eles Perdem o Interesse — Rhaiane Pimenta</title>',
-      '<title>Começar o Quiz — Método Sem Migalhas</title>'
+      '<title>Começar o Quiz</title>'
     )
     .replace(
       '<link rel="canonical" href="https://rhaiane.com.br/">',
@@ -20,7 +20,7 @@ export default async function middleware(request: Request): Promise<Response> {
     )
     .replace(
       '<meta property="og:title" content="Rhaiane Pimenta">',
-      '<meta property="og:title" content="Começar o Quiz — Método Sem Migalhas">'
+      '<meta property="og:title" content="Começar o Quiz">'
     )
     .replace(
       '<meta property="og:description" content="Conteúdo educativo sobre desenvolvimento pessoal e relacionamentos. Entenda os padrões, erros invisíveis e viradas de chave.">',
