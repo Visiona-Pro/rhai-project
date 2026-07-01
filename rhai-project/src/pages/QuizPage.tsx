@@ -2,7 +2,7 @@ import './QuizPage.css';
 import { useState, useEffect, useRef } from 'react';
 import VideoBackground from '../components/VideoBackground';
 
-const CHECKOUT_URL = 'https://pay.kiwify.com.br/1e2xhVp';
+const CHECKOUT_URL = 'https://pay.kiwify.com.br/lal20mr';
 const TOTAL = 8;
 type Screen = 'intro' | 'quiz' | 'loading' | 'resultado';
 type Letra = 'A' | 'B' | 'C' | 'D';
